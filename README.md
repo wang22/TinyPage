@@ -1,4 +1,4 @@
-# tinypage
+# hello
 
 ## Project setup
 ```
