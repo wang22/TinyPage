@@ -2,7 +2,7 @@
     <i :class="`icofont-${icon}`"></i>    
 </template>
 <script>
-import '../assets/icofont.min.css';
+import '../../assets/icofont.min.css';
 
 export default {
     props: {
