@@ -1,7 +1,9 @@
 <template>
   <a href="#" :class="classes">
-    <t-icon v-if="icon" :icon="icon" class="fill-current w-4 h-4 mr-2" />
-    <slot></slot>
+    <span class="mx-auto">
+      <t-icon v-if="icon" :icon="icon" class="fill-current w-4 h-4 mr-2" />
+      <slot></slot>
+    </span>
   </a>
 </template>
 <script>
@@ -26,26 +28,41 @@ export default {
     block: {
       type: Boolean,
       default: false
+    },
+    outline: {
+      type: Boolean,
+      default: false
     }
+  },
+  method: {
   },
   computed: {
     classes() {
-      let size = 'px-3 py-1';
-      switch(this.size) {
-        case 'lg': size = 'px-4 py-2'; break;
-        case 'sm': size = 'px-1 py-0'; break;
-      }
-      return [
-        `shadow text-center ${size} inline-block hover:text-white rounded`,
-        {
-          [`text-${this.color}-100`]: this.color,
-          [`bg-${this.color}-600`]: this.color,
-          [`hover:bg-${this.color}-500`]: this.color && !this.disabled,
-          ['cursor-pointer']: !this.disabled,
-          ['cursor-not-allowed opacity-50']: this.disabled,
-          ['w-full']: this.block
+      const _this = this;
+      const outlineTheme = function () {
+        let size = 'py-2 px-5';
+        switch(_this.size) {
+          case 'lg': size = 'py-3 px-6'; break;
+          case 'sm': size = 'py-1 px-4'; break;
         }
-      ]
+        // 
+        return [
+          `m-2 bg-white tracking-wide rounded border-2 shadow-md  inline-flex items-center ${size}`,
+          {
+            [`text-${_this.color}-800`]: _this.color,
+            [`border-${_this.color}-600`]: _this.color,
+            [`hover:border-${_this.color}-600`]: _this.color && !_this.disabled,
+            [`hover:bg-${_this.color}-600`]: _this.color && !_this.disabled,
+            ['hover:text-white']: !_this.disabled,
+            ['cursor-pointer']: !_this.disabled,
+            ['cursor-not-allowed opacity-50']: _this.disabled,
+            ['w-full']: _this.block
+          }
+        ]
+      }
+      const style = this.outline ? outlineTheme() : '';
+      console.log(style)
+      return style;
     }
   }
 };
