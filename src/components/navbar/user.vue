@@ -17,7 +17,7 @@
             </button> -->
             <button class="flex justify-between py-1 w-full p-2 mt-2 rounded hover:bg-gray-300 focus:outline-none">
                 <div class="text-gray-700 text-sm">Your Profile</div>
-                <div class="text-gray-700 text-sm"><t-icon icon="panda-face"/></div>
+                <div class="text-gray-700 text-sm"><t-icon icon="user-alt-5"/></div>
             </button>
             <button class="flex justify-between py-1 w-full p-2 mt-2 rounded hover:bg-gray-300 focus:outline-none">
                 <div class="text-gray-700 text-sm">Sign Out</div>
