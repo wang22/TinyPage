@@ -7,14 +7,14 @@
                 <div class="text-sm font-bold text-gray-600"><a href="#" class="h-6">@HelloWorld</a></div>
             </div>
             <div class="flex justify-center items-center ml-5">
-                <t-icon icon="rounded-expand" class="text-2xl text-gray-500" />
+                <t-icon :icon="showInfo ? 'rounded-collapse' : 'rounded-expand'" class="text-2xl text-gray-500" />
             </div>
         </div>
         <div class="mt-5 border-t" v-if="showInfo">
-            <!-- <button class="flex justify-between py-1 w-full p-2 mt-2 rounded hover:bg-gray-300 focus:outline-none">
+            <button class="flex justify-between py-1 w-full p-2 mt-2 rounded hover:bg-gray-300 focus:outline-none">
                 <div class="text-gray-700 text-sm">Dark Mode</div>
                 <div class="text-gray-700 text-sm"><t-toggle /></div>
-            </button> -->
+            </button>
             <button class="flex justify-between py-1 w-full p-2 mt-2 rounded hover:bg-gray-300 focus:outline-none">
                 <div class="text-gray-700 text-sm">Your Profile</div>
                 <div class="text-gray-700 text-sm"><t-icon icon="user-alt-5"/></div>

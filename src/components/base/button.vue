@@ -1,39 +1,52 @@
 <template>
-  <button :class="`${theme} ${addTheme}`"><slot></slot></button>
+  <a href="#" :class="classes">
+    <t-icon v-if="icon" :icon="icon" class="fill-current w-4 h-4 mr-2" />
+    <slot></slot>
+  </a>
 </template>
 <script>
-const baseTheme = 'focus:outline-none focus:shadow-outline font-bold py-1 px-2 rounded'
-const theme = {
-  default: `${baseTheme} bg-white hover:bg-gray-200 text-black `,
-  success: `${baseTheme} bg-green-500 hover:bg-green-600 text-white`,
-  error: `${baseTheme} bg-red-500 hover:bg-red-600 text-white`
-}
 export default {
   props: {
-    variant: {
+    color: {
       type: String,
-      default: "default",
+      default: 'blue',
+    },
+    icon: {
+      type: String,
+      default: ''
+    },
+    disabled: {
+      type: Boolean,
+      default: false
     },
     size: {
       type: String,
-      default: "default",
+      default: 'default'
     },
     block: {
       type: Boolean,
       default: false
     }
   },
-  data() {
-    return {
-      theme: '',
-      addTheme: ''
+  computed: {
+    classes() {
+      let size = 'px-3 py-1';
+      switch(this.size) {
+        case 'lg': size = 'px-4 py-2'; break;
+        case 'sm': size = 'px-1 py-0'; break;
+      }
+      return [
+        `shadow text-center ${size} inline-block hover:text-white rounded`,
+        {
+          [`text-${this.color}-100`]: this.color,
+          [`bg-${this.color}-600`]: this.color,
+          [`hover:bg-${this.color}-500`]: this.color && !this.disabled,
+          ['cursor-pointer']: !this.disabled,
+          ['cursor-not-allowed opacity-50']: this.disabled,
+          ['w-full']: this.block
+        }
+      ]
     }
-  },
-  created() {
-    if (this.block) {
-      this.addTheme = ' w-full';
-    }
-    this.theme = theme[this.variant];
   }
 };
 </script>
