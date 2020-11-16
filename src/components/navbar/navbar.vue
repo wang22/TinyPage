@@ -1,6 +1,6 @@
 <template>
   <aside class="p-4">
-      <div class="h-20 text-center text-5">
+      <div class="h-20 text-center text-4xl">
         TinyCMS
       </div>
       

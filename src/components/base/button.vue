@@ -1,7 +1,7 @@
 <template>
   <a href="#" :class="classes">
-    <span class="mx-auto">
-      <t-icon v-if="icon" :icon="icon" class="fill-current w-4 h-4 mr-2" />
+    <span :class="textClasses">
+      <t-icon v-if="icon" :icon="icon" class="fill-current w-4 mr-2" />
       <slot></slot>
     </span>
   </a>
@@ -37,18 +37,29 @@ export default {
   method: {
   },
   computed: {
-    classes() {
-      let size = 'py-1 px-4';
+    textClasses() {
+      let size = 'leading-8';
       switch(this.size) {
-        case 'lg': size = 'py-2 px-6'; break;
-        case 'sm': size = 'py-1 px-4'; break;
+        case 'lg': size = 'leading-9'; break;
+        case 'sm': size = 'leading-7'; break;
+      }
+      return [
+        'mx-auto text-sm',
+        `${size}`
+      ]
+    },
+    classes() {
+      let size = 'px-2 h-8 inline-block';
+      switch(this.size) {
+        case 'lg': size = 'px-2 h-9 inline-block'; break;
+        case 'sm': size = 'px-1 h-7 inline-block'; break;
       }
 
       const _this = this;
       const outlineTheme = function () {
         // 
         return [
-          `bg-white tracking-wide rounded border-2 shadow-md  inline-flex items-center ${size}`,
+          `bg-white tracking-wide rounded border-2 shadow-md items-center ${size}`,
           {
             [`text-${_this.color}-800`]: _this.color,
             [`border-${_this.color}-600`]: _this.color,
