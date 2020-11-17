@@ -21,7 +21,7 @@
             <t-icon icon="rounded-right text-gray-400 inline-block transform rotate-0" />
           </span>
         </li>
-        <div v-show="false">
+        <div v-show="true">
           <li :class="cls.navTitle">
             <t-icon icon="pencil-alt-1" class="ml-5 mr-2 text-xl text-gray-600" /> Drafts
           </li>

@@ -6,7 +6,8 @@ import TBreadcrumb from './base/breadcrumb';
 import TDropdata from './base/dropdata';
 import TDropdown from './dropdown/dropdown';
 import TDropdownGroup from './dropdown/dropdown-group';
-import TTable from './table/table';
+import TPostTable from './table/post-table';
+import TBadge from './base/badge';
 
 export default {
     TIcon,
@@ -17,5 +18,6 @@ export default {
     TDropdata,
     TDropdown,
     TDropdownGroup,
-    TTable
+    TPostTable,
+    TBadge
 }
