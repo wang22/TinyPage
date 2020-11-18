@@ -38,6 +38,9 @@ const routes = [
         children: [
             {
                 path: '/', component: (r) => require(['./pages/posts'], r),
+            },
+            {
+                path: '/publish', component: (r) => require(['./pages/publish'], r),
             }
         ]
     }
