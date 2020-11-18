@@ -1,8 +1,8 @@
 import Vue from 'vue'
-import VueRouter from 'vue-router';
 import App from './App.vue'
 import components from './components/index'
-import routes from './router'
+import router from './router'
+import clickoutsideDirective from './directive/clickoutside'
 import './theme/theme'
 
 
@@ -11,14 +11,7 @@ for (let key in components) {
   Vue.component(key, components[key]);
 }
 
-Vue.directive('clickoutside', require('./directive/clickoutside'));
-Vue.use(VueRouter);
-
-const router = new VueRouter({
-  esModule: false,
-  mode: 'history',
-  router: routes,
-})
+Vue.directive('clickoutside', clickoutsideDirective);
 
 new Vue({
   router,

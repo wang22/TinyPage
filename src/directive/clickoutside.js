@@ -1,6 +1,7 @@
 export default {
     bind(el, binding) {
         function documentHandler(e) {
+            console.log(123);
             // 这里判断点击的元素是否是本身，是本身，则返回
             if (el.contains(e.target)) {
                 return false;
