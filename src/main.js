@@ -1,19 +1,14 @@
 import Vue from 'vue'
 import App from './App.vue'
-import components from './components/index'
 import router from './router'
-import clickoutsideDirective from './directive/clickoutside'
-import './theme/theme'
-
+import "tailwindcss/tailwind.css"
+import VueTailwind from 'vue-tailwind'
+import settings from './taiwind'
 
 Vue.config.productionTip = false
-for (let key in components) {
-  Vue.component(key, components[key]);
-}
-
-Vue.directive('clickoutside', clickoutsideDirective);
+Vue.use(VueTailwind, settings)
 
 new Vue({
   router,
-  render: h => h(App),
-}).$mount('#app');
+  render: h => h(App)
+}).$mount('#app')
