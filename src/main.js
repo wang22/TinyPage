@@ -1,11 +1,17 @@
-import { createApp } from 'vue'
+import Vue from 'vue'
 import App from './App.vue'
-import './index.css'
-import components from './components/index'
+import router from './router'
+import store from './store'
+import './css/style.css'
+import VueTailwind from 'vue-tailwind'
+import settings from './settings'
 
-const app = createApp(App);
-for (let key in components) {
-    app.component(key, components[key]);
-}
+Vue.config.productionTip = false
 
-app.mount('#app');
+Vue.use(VueTailwind, settings)
+
+new Vue({
+  router,
+  store,
+  render: h => h(App)
+}).$mount('#app')
