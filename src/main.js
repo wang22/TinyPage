@@ -12,7 +12,7 @@ Vue.config.productionTip = false
 Vue.use(VueTailwind, settings)
 
 for (let key in components) {
-  Vue.components(key, components[key]);
+  Vue.component(key, components[key]);
 }
 
 new Vue({

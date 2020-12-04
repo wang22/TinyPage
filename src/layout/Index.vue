@@ -23,41 +23,41 @@
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
                 >
-                <t-icon class="w-6 mr-2" /><span>Posts</span>
+                <t-icon class="w-6 mr-1" /><span>Posts</span>
               </a
               >
             </li>
             <li>
-              <a class="p-3 rounded-md block hover:bg-gray-300" href="hello"
-                >Channels</a
+              <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
+                ><t-icon class="w-6 mr-1" /><span>Channels</span></a
               >
             </li>
             <li>
-              <a class="p-3 rounded-md block hover:bg-gray-300" href="hello"
-                >Tags</a
+              <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
+                ><t-icon class="w-6 mr-1" />Tags</a
               >
             </li>
             <li>
-              <a class="p-3 rounded-md block hover:bg-gray-300" href="hello"
-                >Pages</a
+              <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
+                ><t-icon class="w-6 mr-1" />Pages</a
               >
             </li>
           </ul>
           <label class="mt-4 block uppercase text-sm text-gray-500">settings</label>
           <ul class="font-bold mt-2">
             <li>
-              <a class="p-3 rounded-md block hover:bg-gray-300" href="hello"
-                >General</a
+              <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
+                ><t-icon class="w-6 mr-1" />General</a
               >
             </li>
             <li>
-              <a class="p-3 rounded-md block hover:bg-gray-300" href="hello"
-                >Design</a
+              <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
+                ><t-icon class="w-6 mr-1" />Design</a
               >
             </li>
             <li>
-              <a class="p-3 rounded-md block hover:bg-gray-300" href="hello"
-                >Code injection</a
+              <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
+                ><t-icon class="w-6 mr-1" />Code injection</a
               >
             </li>
           </ul>
