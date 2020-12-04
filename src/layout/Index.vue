@@ -19,45 +19,46 @@
         <div class="px-3 mt-8">
           <t-input placeholder="search" class="w-full shadow-sm" />
           <label class="mt-8 block uppercase text-sm text-gray-500">manage</label>
-          <ul class="font-bold mt-2">
+          <ul class="mt-2">
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
                 >
-                <t-icon class="w-6 mr-1" /><span>Posts</span>
+                Posts
               </a
               >
             </li>
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
-                ><t-icon class="w-6 mr-1" /><span>Channels</span></a
+                >Channels</a
               >
             </li>
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
-                ><t-icon class="w-6 mr-1" />Tags</a
+                >Tags</a
               >
             </li>
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
-                ><t-icon class="w-6 mr-1" />Pages</a
+                >Pages</a
               >
             </li>
           </ul>
           <label class="mt-4 block uppercase text-sm text-gray-500">settings</label>
-          <ul class="font-bold mt-2">
+          <ul class="mt-2">
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
-                ><t-icon class="w-6 mr-1" />General</a
+                >General</a
               >
             </li>
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
-                ><t-icon class="w-6 mr-1" />Design</a
+                >Design</a
               >
             </li>
             <li>
               <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
-                ><t-icon class="w-6 mr-1" />Code injection</a
+                >
+                Code injection</a
               >
             </li>
           </ul>
