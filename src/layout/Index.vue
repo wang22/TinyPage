@@ -21,8 +21,10 @@
           <label class="mt-8 block uppercase text-sm text-gray-500">manage</label>
           <ul class="font-bold mt-2">
             <li>
-              <a class="p-3 rounded-md block hover:bg-gray-300" href="hello"
-                >Posts</a
+              <a class="p-3 rounded-md hover:bg-gray-300 flex justify-start" href="hello"
+                >
+                <t-icon class="w-6 mr-2" /><span>Posts</span>
+              </a
               >
             </li>
             <li>
