@@ -1,5 +1,5 @@
-import TIcon from './Icon/Icon.vue'
+import TNavbar from './Navbar/Navbar.vue'
 
 export default {
-    TIcon
+    TNavbar
 }

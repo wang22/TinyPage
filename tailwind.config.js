@@ -1,7 +1,9 @@
+const defaultTheme = require('tailwindcss/defaultTheme')
+const colors = require('tailwindcss/colors')
+
 module.exports = {
-  future: {
-  },
-  purge: [],
+  purge: ['./src/**/*.{js,mdx}'],
+  darkMode: 'class',
   theme: {
     colors: {
       transparent: 'transparent',
@@ -10,121 +12,203 @@ module.exports = {
       black: '#000',
       white: '#fff',
 
-      gray: {
-        100: '#f7fafc',
-        200: '#edf2f7',
-        300: '#e2e8f0',
-        400: '#cbd5e0',
-        500: '#a0aec0',
-        600: '#718096',
-        700: '#4a5568',
-        800: '#2d3748',
-        900: '#1a202c',
-      },
-      red: {
-        100: '#fff5f5',
-        200: '#fed7d7',
-        300: '#feb2b2',
-        400: '#fc8181',
-        500: '#f56565',
-        600: '#e53e3e',
-        700: '#c53030',
-        800: '#9b2c2c',
-        900: '#742a2a',
-      },
+      amber: colors.amber,
+      blue: colors.blue,
+      cyan: colors.cyan,
+      emerald: colors.emerald,
+      fuchsia: colors.fuchsia,
+      gray: colors.coolGray,
+      green: colors.green,
+      indigo: colors.indigo,
+      'light-blue': colors.lightBlue,
+      lime: colors.lime,
       orange: {
-        100: '#fffaf0',
-        200: '#feebc8',
-        300: '#fbd38d',
-        400: '#f6ad55',
-        500: '#ed8936',
-        600: '#dd6b20',
-        700: '#c05621',
-        800: '#9c4221',
-        900: '#7b341e',
-      },
-      yellow: {
-        100: '#fffff0',
-        200: '#fefcbf',
-        300: '#faf089',
-        400: '#f6e05e',
-        500: '#ecc94b',
-        600: '#d69e2e',
-        700: '#b7791f',
-        800: '#975a16',
-        900: '#744210',
-      },
-      green: {
-        100: '#f0fff4',
-        200: '#c6f6d5',
-        300: '#9ae6b4',
-        400: '#68d391',
-        500: '#48bb78',
-        600: '#38a169',
-        700: '#2f855a',
-        800: '#276749',
-        900: '#22543d',
-      },
-      teal: {
-        100: '#e6fffa',
-        200: '#b2f5ea',
-        300: '#81e6d9',
-        400: '#4fd1c5',
-        500: '#38b2ac',
-        600: '#319795',
-        700: '#2c7a7b',
-        800: '#285e61',
-        900: '#234e52',
-      },
-      blue: {
-        100: '#ebf8ff',
-        200: '#bee3f8',
-        300: '#90cdf4',
-        400: '#63b3ed',
-        500: '#4299e1',
-        600: '#3182ce',
-        700: '#2b6cb0',
-        800: '#2c5282',
-        900: '#2a4365',
-      },
-      indigo: {
-        100: '#ebf4ff',
-        200: '#c3dafe',
-        300: '#a3bffa',
-        400: '#7f9cf5',
-        500: '#667eea',
-        600: '#5a67d8',
-        700: '#4c51bf',
-        800: '#434190',
-        900: '#3c366b',
-      },
-      purple: {
-        100: '#faf5ff',
-        200: '#e9d8fd',
-        300: '#d6bcfa',
-        400: '#b794f4',
-        500: '#9f7aea',
-        600: '#805ad5',
-        700: '#6b46c1',
-        800: '#553c9a',
-        900: '#44337a',
+        ...colors.orange,
+        1000: '#4a2008',
       },
       pink: {
-        100: '#fff5f7',
-        200: '#fed7e2',
-        300: '#fbb6ce',
-        400: '#f687b3',
-        500: '#ed64a6',
-        600: '#d53f8c',
-        700: '#b83280',
-        800: '#97266d',
-        900: '#702459',
+        ...colors.pink,
+        1000: '#460d25',
+      },
+      purple: colors.purple,
+      red: colors.red,
+      rose: colors.rose,
+      teal: colors.teal,
+      violet: colors.violet,
+      yellow: colors.yellow,
+
+      code: {
+        punctuation: '#A1E8FF',
+        tag: '#D58FFF',
+        'attr-name': '#4BD0FB',
+        'attr-value': '#A2F679',
+        string: '#A2F679',
+        highlight: 'rgba(134, 239, 172, 0.25)',
       },
     },
-    extend: {},
+    extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css: {
+            maxWidth: 'none',
+            color: theme('colors.gray.500'),
+            '> :first-child': { marginTop: '-' },
+            '> :last-child': { marginBottom: '-' },
+            '&:first-child > :first-child': {
+              marginTop: '0',
+            },
+            '&:last-child > :last-child': {
+              marginBottom: '0',
+            },
+            'h1, h2': {
+              letterSpacing: '-0.025em',
+            },
+            'h2, h3': {
+              'scroll-margin-block': `${(70 + 40) / 16}rem`,
+            },
+            'ul > li': {
+              paddingLeft: '1.5em',
+            },
+            'ul > li::before': {
+              width: '0.75em',
+              height: '0.125em',
+              top: 'calc(0.875em - 0.0625em)',
+              left: 0,
+              borderRadius: 0,
+              backgroundColor: theme('colors.gray.300'),
+            },
+            a: {
+              color: theme('colors.cyan.700'),
+              fontWeight: theme('fontWeight.medium'),
+              textDecoration: 'none',
+              boxShadow: theme('boxShadow.link'),
+            },
+            'a code': {
+              color: 'inherit',
+              fontWeight: 'inherit',
+            },
+            strong: {
+              color: theme('colors.gray.900'),
+              fontWeight: theme('fontWeight.medium'),
+            },
+            'a strong': {
+              color: 'inherit',
+              fontWeight: 'inherit',
+            },
+            code: {
+              fontWeight: '400',
+              color: theme('colors.violet.600'),
+            },
+            'code::before': {
+              // content: 'none',
+            },
+            'code::after': {
+              // content: 'none',
+            },
+            pre: {
+              backgroundColor: '-',
+              color: theme('colors.white'),
+              borderRadius: 0,
+              marginTop: 0,
+              marginBottom: 0,
+            },
+            table: {
+              fontSize: theme('fontSize.sm')[0],
+              lineHeight: theme('fontSize.sm')[1].lineHeight,
+            },
+            thead: {
+              color: theme('colors.gray.600'),
+              borderBottomColor: theme('colors.gray.200'),
+            },
+            'thead th': {
+              paddingTop: 0,
+              fontWeight: theme('fontWeight.semibold'),
+            },
+            'tbody tr': {
+              borderBottomColor: theme('colors.gray.200'),
+            },
+            'tbody tr:last-child': {
+              borderBottomWidth: '1px',
+            },
+            'tbody code': {
+              fontSize: theme('fontSize.xs')[0],
+            },
+          },
+        },
+      }),
+      fontFamily: {
+        sans: ['Inter var', ...defaultTheme.fontFamily.sans],
+        mono: ['Menlo', ...defaultTheme.fontFamily.mono],
+        source: ['Source Sans Pro', ...defaultTheme.fontFamily.sans],
+        'ubuntu-mono': ['Ubuntu Mono', ...defaultTheme.fontFamily.mono],
+        system: defaultTheme.fontFamily.sans,
+        flow: 'Flow',
+      },
+      spacing: {
+        18: '4.5rem',
+        88: '22rem',
+        '15px': '0.9375rem',
+        '23px': '1.4375rem',
+        full: '100%',
+      },
+      width: {
+        xl: '36rem',
+      },
+      maxWidth: {
+        '4.5xl': '60rem',
+        '8xl': '90rem',
+      },
+      maxHeight: (theme) => ({
+        sm: '30rem',
+        '(screen-18)': `calc(100vh - ${theme('spacing.18')})`,
+      }),
+      boxShadow: {
+        px: '0 0 0 1px rgba(0, 0, 0, 0.5)',
+        link: 'inset 0 -0.125em 0 0 #fff, inset 0 -0.375em 0 0 rgba(165, 243, 252, 0.4)',
+      },
+      keyframes: {
+        'flash-code': {
+          '0%': { backgroundColor: 'rgba(134, 239, 172, 0.25)' },
+          '100%': { backgroundColor: 'transparent' },
+        },
+      },
+      animation: {
+        'flash-code': 'flash-code 1s forwards',
+        'flash-code-slow': 'flash-code 2s forwards',
+      },
+      cursor: {
+        grab: 'grab',
+        grabbing: 'grabbing',
+      },
+      transitionDuration: {
+        1500: '1.5s',
+      },
+      backgroundImage: {
+        squiggle: `url("data:image/svg+xml,%3Csvg%20xmlns%3D'http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg'%20viewBox%3D'0%200%206%203'%20enable-background%3D'new%200%200%206%203'%20height%3D'3'%20width%3D'6'%3E%3Cg%20fill%3D'%23fbbf24'%3E%3Cpolygon%20points%3D'5.5%2C0%202.5%2C3%201.1%2C3%204.1%2C0'%2F%3E%3Cpolygon%20points%3D'4%2C0%206%2C2%206%2C0.6%205.4%2C0'%2F%3E%3Cpolygon%20points%3D'0%2C2%201%2C3%202.4%2C3%200%2C0.6'%2F%3E%3C%2Fg%3E%3C%2Fsvg%3E")`,
+      },
+      scale: {
+        80: '0.8',
+      },
+      skew: {
+        '-20': '-20deg',
+      },
+    },
   },
-  variants: {},
+  variants: {
+    extend: {
+      backgroundColor: ['odd', 'even', 'active'],
+      borderWidth: ['first', 'last', 'hover', 'focus'],
+      cursor: ['active'],
+      opacity: ['disabled'],
+      textColor: ['group-focus'],
+      ringWidth: ['focus-visible'],
+      ringOffsetWidth: ['focus-visible'],
+      ringOffsetColor: ['focus-visible'],
+      ringColor: ['focus-visible'],
+      ringOpacity: ['focus-visible'],
+      rotate: ['first', 'last', 'odd', 'even'],
+    },
+  },
   plugins: [
-    require('@tailwindcss/custom-forms')
   ],
 }
