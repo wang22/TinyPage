@@ -1,8 +1,8 @@
 <template>
-  <i :class="`icofont-${icon}`"></i>
+  <i :class="`icon-${icon}`"></i>
 </template>
 <script>
-import '../../assets/icofont.min.css'
+import '../../assets/styles/simple-line-icons.css'
 
 export default {
   props: {

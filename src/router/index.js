@@ -4,7 +4,24 @@ const routes = [
   {
     path: '/',
     name: 'Index',
-    component: Index
+    component: Index,
+    children: [
+      {
+        path: '/',
+        name: 'PostList',
+        component: () => import('../views/post/List.vue')
+      },
+      {
+        path: '/posts',
+        name: 'Posts',
+        component: () => import('../views/post/List.vue')
+      },
+      {
+        path: '/channels',
+        name: 'Channels',
+        component: () => import('../views/channel/List.vue')
+      }
+    ]
   }
 ]
 
