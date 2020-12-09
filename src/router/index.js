@@ -14,7 +14,12 @@ const routes = [
       {
         path: '/posts',
         name: 'Posts',
-        component: () => import('../views/post/List.vue')
+        component: () => import('../views/post/List.vue'),
+      },
+      {
+        path: '/posts/publish',
+        name: 'Publish',
+        component: () => import('../views/post/Publish.vue')
       },
       {
         path: '/channels',

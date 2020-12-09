@@ -3,9 +3,9 @@
         <t-button>New Channel</t-button>
     </t-content-header>
     <t-table :column="table.columns" :data="table.data">
-        <template v-slot:title="slotProps">
-            <h5>{{slotProps.item.title}}</h5>
-            by <strong>{{slotProps.item.author}}</strong>
+        <template v-slot:title="props">
+            <h5>{{props.item.title}}</h5>
+            by <strong>{{props.item.author}}</strong>
         </template>
     </t-table>
 </template>
