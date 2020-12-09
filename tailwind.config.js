@@ -205,7 +205,8 @@ module.exports = {
       outline: '0 0 0 3px rgba(66, 153, 225, 0.5)',
       none: 'none',
       right: '5px 0 10px #e4e7ed',
-      block: '0 1px 1px #e4e7ed'
+      block: '0 1px 1px #e4e7ed',
+      table: '0 0 1px rgba(0,0,0,.12), 0 1px 6px rgba(0,0,0,.03), 0 6px 10px -8px rgba(0,0,0,.1)'
     }
   },
   variants: {

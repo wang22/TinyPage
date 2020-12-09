@@ -13,5 +13,17 @@ export default {
             type: Boolean,
             default: def
         }
+    },
+    Object(def) {
+        return {
+            type: Object,
+            default: () => def
+        }
+    },
+    Array(){
+        return {
+            type: Array,
+            default: () => []
+        }
     }
 }
