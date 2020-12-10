@@ -50,6 +50,18 @@ export default {
             {
               name: 'Badge',
               router: '/components/badge'
+            },
+            {
+              name: 'Table',
+              router: '/components/table'
+            },
+            {
+              name: 'Card',
+              router: '/components/card'
+            },
+            {
+              name: 'Form',
+              router: '/components/form'
             }
           ]
         }

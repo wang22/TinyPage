@@ -29,6 +29,21 @@ const routes = [
         path: '/components/badge',
         name: 'ComponentBadge',
         component: () => import('../views/components/Badge.vue')
+      },
+      {
+        path: '/components/table',
+        name: 'ComponentTable',
+        component: () => import('../views/components/Table.vue')
+      },
+      {
+        path: '/components/card',
+        name: 'ComponentCard',
+        component: () => import('../views/components/Card.vue')
+      },
+      {
+        path: '/components/form',
+        name: 'ComponentForm',
+        component: () => import('../views/components/Form.vue')
       }
     ]
   }
