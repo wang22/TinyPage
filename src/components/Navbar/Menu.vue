@@ -62,6 +62,10 @@ export default {
             {
               name: 'Form',
               router: '/components/form'
+            },
+            {
+              name: 'Editor',
+              router: '/components/editor'
             }
           ]
         }

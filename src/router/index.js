@@ -44,6 +44,11 @@ const routes = [
         path: '/components/form',
         name: 'ComponentForm',
         component: () => import('../views/components/Form.vue')
+      },
+      {
+        path: '/components/editor',
+        name: 'ComponentEditor',
+        component: () => import('../views/components/Editor.vue')
       }
     ]
   }
