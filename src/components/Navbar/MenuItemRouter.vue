@@ -9,7 +9,7 @@
     ></span>
     <span class="nav-text">{{ menu.name }}</span>
     <span class="nav-badge" v-if="menu.badge">
-      <b-badge :variant="menu.badgeStyle">1</b-badge>
+      <b-badge pill :variant="menu.badgeStyle">1</b-badge>
     </span>
     <span class="nav-caret" v-if="menu.children"></span>
   </router-link>
