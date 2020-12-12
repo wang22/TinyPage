@@ -4547,6 +4547,25 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     border-bottom-right-radius: .2rem
 }
 
+.b-pagination {
+    .page-item {
+        background: #fff;
+        margin-left: .1rem;
+        margin-right: .1rem;
+        border-radius: 3px;
+        box-shadow: 0 1px 3px rgba(0,0,0,.05);
+        .page-link {
+            border: 0;
+        }
+    }
+    .active {
+        .page-link {
+            border-radius: 3px;
+            box-shadow: 0 1px 3px rgba(0,0,0,.05);
+        }
+    }
+}
+
 .badge {
     display: inline-block;
     padding: .25em .4em;

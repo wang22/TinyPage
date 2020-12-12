@@ -21,6 +21,11 @@ const routes = [
         component: () => import('../views/post/List.vue')
       },
       {
+        path: '/posts/publish',
+        name: 'PostsPublish',
+        component: () => import('../views/post/Publish.vue')
+      },
+      {
         path: '/components/alert',
         name: 'ComponentAlert',
         component: () => import('../views/components/Alert.vue')

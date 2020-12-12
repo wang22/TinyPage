@@ -1,37 +1,52 @@
 <template>
-  <div class="scroll-y mx-3 mb-0">
-    <b-table class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="items" sort-icon-left>
-      <template #table-busy>
-        <div class="text-center text-primary my-2">
-          <b-spinner class="align-middle"></b-spinner><br><br>
-          <strong>Loading...</strong>
+  <div>
+    <div class="scroll-y mx-3 mb-0">
+      <b-table class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="items" sort-icon-left>
+        <template #table-busy>
+          <div class="text-center text-primary my-2">
+            <b-spinner class="align-middle"></b-spinner><br><br>
+            <strong>Loading...</strong>
+          </div>
+        </template>
+        <template #head(title)="data">
+          <span class="text-muted">{{data.label}}</span>
+        </template>
+        <template #head(author)="data">
+          <span class="text-muted">{{data.label}}</span>
+        </template>
+        <template #head(status)="data">
+          <span class="text-muted">{{data.label}}</span>
+        </template>
+        <template #head(lastUpdate)="data">
+          <span class="text-muted">{{data.label}}</span>
+        </template>
+        <template #cell(title)="data">
+          <a href="#" class="item-title text-color">{{data.item.title}}</a>
+          <div class="item-except text-muted text-sm h-1x">{{data.item.description}}</div>
+        </template>
+        <template #cell(author)="">
+          <div class="avatar-group">
+            <b-avatar class="avatar w-32" v-b-tooltip.hover title="Tooltip directive content"></b-avatar>
+          </div>
+        </template>
+        <template #cell(status)="data">
+          <h5><b-badge variant="primary">{{data.item.status}}</b-badge></h5>
+        </template>
+      </b-table>
+    </div>
+    <div class="px-3 mt-auto">
+      <div class="d-flex align-items-center">
+        <div class="flex d-flex flex-row">
+          <b-pagination
+            :total-rows="30"
+            :per-page="1"
+            :limit="10"
+            size="sm"
+          ></b-pagination>
         </div>
-      </template>
-      <template #head(title)="data">
-        <span class="text-muted">{{data.label}}</span>
-      </template>
-      <template #head(author)="data">
-        <span class="text-muted">{{data.label}}</span>
-      </template>
-      <template #head(status)="data">
-        <span class="text-muted">{{data.label}}</span>
-      </template>
-      <template #head(lastUpdate)="data">
-        <span class="text-muted">{{data.label}}</span>
-      </template>
-      <template #cell(title)="data">
-        <a href="#" class="item-title text-color">{{data.item.title}}</a>
-        <div class="item-except text-muted text-sm h-1x">{{data.item.description}}</div>
-      </template>
-      <template #cell(author)="">
-        <div class="avatar-group">
-          <b-avatar class="avatar w-32" v-b-tooltip.hover title="Tooltip directive content"></b-avatar>
-        </div>
-      </template>
-      <template #cell(status)="data">
-        <h5><b-badge variant="primary">{{data.item.status}}</b-badge></h5>
-      </template>
-    </b-table>
+        <div><span class="text-muted">Total:</span> <span id="count">20</span></div>
+      </div>
+    </div>
   </div>
 </template>
 <script>
