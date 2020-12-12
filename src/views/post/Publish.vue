@@ -1,6 +1,6 @@
 <template>
   <t-main-container>
-    <b-input size="lg" class="form-control-theme form-control mb-3" style="text-align:center" placeholder="Post Title" />
+    <b-input size="lg" class="form-control-theme form-control no-bg no-shadow" style="text-align:center" placeholder="Post Title" />
     <div class="editor"><div id="editorjs"></div></div>
   </t-main-container>
 </template>
@@ -22,10 +22,12 @@ export default {
 </script>
 <style lang="scss" scoped>
 .editor {
+  margin-bottom: 1rem;
   padding: 1rem;
   background: #fff;
-  border-radius: 3px;
+  border-radius: 5px;
   box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  border: 2px dashed #ced4da;
 }
 .cdx-block {
   background: #f00;
