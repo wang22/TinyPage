@@ -2,7 +2,12 @@
   <div class="fade aside aside-sm">
     <div class="modal-dialog d-flex flex-column w-md bg-body">
       <div class="navbar">
-        <span class="text-md mx-2">Posts</span>
+        <span class="text-md mx-2">Channels</span>
+        <b-button variant="icon" size="sm" class="no-bg no-shadow">
+          <svg xmlns="http://www.w3.org/2000/svg" white="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+        </b-button>
       </div>
       <div class="scrollable hover">
         <div class="sidenav p-2">
