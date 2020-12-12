@@ -3,9 +3,24 @@
     <post-navbar />
     <div class="d-flex flex">
       <div class="d-flex flex-column flex">
-        <div class="p-3">
+        <div class="px-3 pt-3">
           <div class="toolbar">
-            toolbars
+            <b-button-group>
+              <b-dropdown size="sm" variant="white" text="Status">
+                <b-dropdown-item>Public</b-dropdown-item>
+                <b-dropdown-item>Members-only</b-dropdown-item>
+              </b-dropdown>
+              <b-dropdown size="sm" variant="white" text="Sort by: Newest">
+                <b-dropdown-item>Oldest</b-dropdown-item>
+                <b-dropdown-item>Recently updated</b-dropdown-item>
+              </b-dropdown>
+            </b-button-group>
+             <b-input-group>
+              <b-form-input class="form-control-theme" size="sm"></b-form-input>
+              <b-input-group-append>
+                <b-button size="sm" variant="white">Search</b-button>
+              </b-input-group-append>
+            </b-input-group>
           </div>
         </div>
         <post-list />
