@@ -45,15 +45,18 @@ export default {
         },
         {
           key: 'author',
-          label: 'Author'
+          label: 'Author',
+          thClass: 'w-muted'
         },
         {
           key: 'status',
-          label: 'Status'
+          label: 'Status',
+          thClass: 'w-muted'
         },
         {
           key: 'lastUpdate',
-          label: 'Last Update'
+          label: 'Last Update',
+          thClass: 'w-muted'
         }
       ],
       items: [
@@ -67,8 +70,8 @@ export default {
 }
 </script>
 <style>
-.w-title {
-  width: 20px;
+.w-muted {
+  width: 10%;
 }
 .td-class {
   color: #000 !important;
