@@ -2,16 +2,37 @@
   <div>
     <t-accordion title="Channel name" mark="channel name" :icon="icons.name">
       <template #right>
-        <b-form-input placeholder="Enter channel name" v-model="channel.name"></b-form-input>
+        <div style="width: 200px">
+          <b-form-input placeholder="Enter channel name" v-model="channel.name"></b-form-input>
+        </div>
       </template>
     </t-accordion>
     <t-accordion title="Channel path" mark="channel path" :icon="icons.path" ref="channelPath">
       <template #right>
-        <b-form-input placeholder="Enter channel path" v-model="channel.path" @focus="channelNameDetail(true)" @blur="channelNameDetail(false)"></b-form-input>
+        <div style="width: 200px">
+          <b-form-input placeholder="Enter channel path" v-model="channel.path" @focus="channelNameDetail(true)" @blur="channelNameDetail(false)"></b-form-input>
+        </div>
       </template>
       <template #collapse>
         <h6>Browser Preview</h6>
         <t-v-browser :url="`https://localhost/${channel.path}`" />
+      </template>
+    </t-accordion>
+    <t-accordion title="Visiable" mark="options" :icon="icons.visiable">
+      <template #right>
+        <div style="width: 200px">
+          <b-badge>Public</b-badge>
+          <b-form-input type="range" min="0" max="3"></b-form-input>
+        </div>
+      </template>
+      <template #collapse>
+        <b-form-group
+          id="input-group-1"
+          label="Member visiable:"
+          label-for="input-1"
+        >
+          <b-form-input id="range-1" v-model="value" type="range" min="0" max="5"></b-form-input>
+        </b-form-group>
       </template>
     </t-accordion>
     <t-accordion title="SEO" mark="options" :icon="icons.seo">
@@ -39,22 +60,6 @@
             ></b-form-input>
           </b-form-group>
         </b-form>
-      </template>
-    </t-accordion>
-    <t-accordion title="Visiable" mark="options" :icon="icons.visiable">
-      <template #collapse>
-        <b-form-group
-          id="input-group-1"
-          label="Member visiable:"
-          label-for="input-1"
-        >
-          <b-form-checkbox-group
-            v-model="visiableSelected"
-            :options="switches.memberVisiable"
-            switches
-            stacked
-          ></b-form-checkbox-group>
-        </b-form-group>
       </template>
     </t-accordion>
     <t-accordion title="Extension Field" mark="options" :icon="icons.field">
