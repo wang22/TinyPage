@@ -19,39 +19,39 @@
         <div class="sidenav p-2">
           <nav class="nav-border b-primary auto-nav">
             <ul class="nav">
-              <li><a href="app.user.html#all"><span class="nav-text">All</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
-              <li><a href="app.user.html#all"><span class="nav-text">Drafts</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
-              <li><a href="app.user.html#all"><span class="nav-text">Scheduled</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
+              <li><a href="javascript:void(0)"><span class="nav-text">All</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
+              <li><a href="javascript:void(0)"><span class="nav-text">Drafts</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
+              <li><a href="javascript:void(0)"><span class="nav-text">Scheduled</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li class="d-flex active">
-                <a href="app.user.html#all" class="flex-grow-1"><span class="nav-text">Java</span></a>
+                <a href="javascript:void(0)" class="flex-grow-1"><span class="nav-text">Java</span></a>
                 <b-button size="sm" variant="white" class="no-bg no-shadow">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mx-2"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                 </b-button>
               </li>
               <li class="d-flex">
-                <a href="app.user.html#all" class="flex-grow-1"><span class="nav-text">Java</span></a>
+                <a href="javascript:void(0)" class="flex-grow-1"><span class="nav-text">Java</span></a>
                 <b-button size="sm" variant="white" class="no-bg no-shadow">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mx-2"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                 </b-button>
               </li>
               <li class="d-flex">
-                <a href="app.user.html#all" class="flex-grow-1"><span class="nav-text">Java</span></a>
+                <a href="javascript:void(0)" class="flex-grow-1"><span class="nav-text">Java</span></a>
                 <b-button size="sm" variant="white" class="no-bg no-shadow">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mx-2"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                 </b-button>
               </li>
               <li class="nav-header hidden-folded mt-2"><span class="d-block pt-1 text-sm text-muted">Authors</span></li>
-              <li class="active"><a href="app.user.html#client"><span class="m-2"><b-avatar class="avatar w-24"></b-avatar> </span><span class="nav-text">小王王</span></a></li>
-              <li><a href="app.user.html#client"><span class="m-2"><b-avatar class="avatar w-24"></b-avatar> </span><span class="nav-text">kkkkkkkv</span></a></li>
+              <li class="active"><a href="javascript:void(0)"><span class="m-2"><b-avatar class="avatar w-24"></b-avatar> </span><span class="nav-text">小王王</span></a></li>
+              <li><a href="javascript:void(0)"><span class="m-2"><b-avatar class="avatar w-24"></b-avatar> </span><span class="nav-text">kkkkkkkv</span></a></li>
               <li class="nav-header hidden-folded mt-2"><span class="d-block pt-1 text-sm text-muted">Tags</span></li>
-              <li class="active"><a href="app.user.html#client"><span class="mx-2"><b class="badge badge-circle sm text-primary"></b> </span><span class="nav-text">java</span></a></li>
-              <li><a href="app.user.html#client"><span class="mx-2"><b class="badge badge-circle sm text-primary"></b> </span><span class="nav-text">php</span></a></li>
+              <li class="active"><a href="javascript:void(0)"><span class="mx-2"><b class="badge badge-circle sm text-primary"></b> </span><span class="nav-text">java</span></a></li>
+              <li><a href="javascript:void(0)"><span class="mx-2"><b class="badge badge-circle sm text-primary"></b> </span><span class="nav-text">php</span></a></li>
             </ul>
           </nav>
         </div>
       </div>
     </div>
-    <b-modal id="modal-1" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop>
+    <b-modal id="modal-1" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop>
       <add-channel />
     </b-modal>
   </div>

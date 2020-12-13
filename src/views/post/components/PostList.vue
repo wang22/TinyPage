@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="scroll-y mx-3 mb-0">
-      <b-table class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="items" sort-icon-left>
+      <b-table class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="items">
         <template #table-busy>
           <div class="text-center text-primary my-2">
             <b-spinner class="align-middle"></b-spinner><br><br>
