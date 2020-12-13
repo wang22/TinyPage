@@ -5447,7 +5447,8 @@ a.close.disabled {
     z-index: 1040;
     width: 100vw;
     height: 100vh;
-    background-color: #13182c
+    background-color: #13182c;
+    opacity: 0.5;
 }
 
 .modal-backdrop.fade {
@@ -5476,6 +5477,10 @@ a.close.disabled {
 .modal-title {
     margin-bottom: 0;
     line-height: 1.4285714286
+}
+
+.modal-no-padding {
+    padding: 0 !important;
 }
 
 .modal-body {
@@ -10075,6 +10080,12 @@ b,strong {
 .dropdown-header {
     color: inherit;
     opacity: .5
+}
+
+.no-caret {
+    .dropdown-toggle::after {
+        display: none;
+    }
 }
 
 .dropdown-toggle {

@@ -3,11 +3,17 @@
     <div class="modal-dialog d-flex flex-column w-md bg-body">
       <div class="navbar">
         <span class="text-md mx-2">Channels</span>
-        <b-button variant="icon" size="sm" class="no-bg no-shadow">
-          <svg xmlns="http://www.w3.org/2000/svg" white="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
-          </svg>
-        </b-button>
+        <b-dropdown size="sm" class="no-bg no-shadow no-caret" variant="icon">
+          <template #button-content>
+            <svg xmlns="http://www.w3.org/2000/svg"  white="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+          </template>
+          <b-dropdown-item v-b-modal.modal-1>
+            Add New Channel
+          </b-dropdown-item>
+          <b-dropdown-item href="#">Channel Management</b-dropdown-item>
+        </b-dropdown>
       </div>
       <div class="scrollable hover">
         <div class="sidenav p-2">
@@ -27,5 +33,16 @@
         </div>
       </div>
     </div>
+    <b-modal id="modal-1" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop>
+      <add-channel />
+    </b-modal>
   </div>
 </template>
+<script>
+import AddChannel from '../modal/AddChannel.vue'
+export default {
+  components: {
+    AddChannel
+  }
+}
+</script>
