@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../layout/Index.vue'
+import Blank from '../layout/Blank.vue'
 
 Vue.use(VueRouter)
 
@@ -17,7 +18,7 @@ const routes = [
       },
       {
         path: '/posts',
-        name: 'Posts',
+        name: 'PostsList',
         component: () => import('../views/post/List.vue')
       },
       {
@@ -54,6 +55,18 @@ const routes = [
         path: '/components/editor',
         name: 'ComponentEditor',
         component: () => import('../views/components/Editor.vue')
+      }
+    ]
+  },
+  {
+    path: '/auth',
+    name: 'auth',
+    component: Blank,
+    children: [
+      {
+        path: 'signin',
+        name: 'AuthBlank',
+        component: () => import('../views/auth/Signin.vue')
       }
     ]
   }
