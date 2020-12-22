@@ -10,21 +10,21 @@
       <b-card-body>
         <b-form-group
           label="User name or email"
-          label-for="input-1"
+          label-for="account"
         >
-          <b-form-input id="input-1" placeholder="Entry your user name or email"></b-form-input>
+          <b-form-input id="account" v-model="accountInfo.account" placeholder="Entry your user name or email"></b-form-input>
         </b-form-group>
         <b-form-group
           label="Password"
-          label-for="input-1"
+          label-for="passwd"
         >
-          <b-form-input id="input-1" placeholder="Entry your password"></b-form-input>
+          <b-form-input id="passwd" v-model="accountInfo.password" placeholder="Entry your password"></b-form-input>
         </b-form-group>
         <div class="d-flex justify-content-between">
           <b-form-checkbox>
             Remember me
           </b-form-checkbox>
-          <b-button variant="primary">
+          <b-button variant="primary" @click="doSigin">
             Sign In
           </b-button>
         </div>
@@ -42,3 +42,31 @@
     </b-card>
   </div>
 </template>
+<script>
+import { ACCESS_TOKEN } from '@/utils/request'
+import { signin } from '@/api/auth'
+import storage from 'store'
+
+export default {
+  data () {
+    return {
+      accountInfo: {
+        account: '',
+        password: ''
+      }
+    }
+  },
+  methods: {
+    doSigin () {
+      signin(this.accountInfo).then(resp => {
+        if (resp.code !== 0) {
+          alert(resp.msg)
+          return
+        }
+        storage.set(ACCESS_TOKEN, resp.data.token)
+        this.$router.push('/')
+      })
+    }
+  }
+}
+</script>

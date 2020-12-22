@@ -2,12 +2,11 @@ import axios from 'axios'
 import { VueAxios } from './axios'
 import storage from 'store'
 
-
 export const ACCESS_TOKEN = 'Access-Token'
 
 const request = axios.create({
   // API 请求的默认前缀
-  baseURL: 'http://localhost:8080',
+  baseURL: 'http://127.0.0.1:8080',
   timeout: 6000 // 请求超时时间
 })
 
@@ -43,7 +42,7 @@ const errorHandler = (error) => {
 request.interceptors.request.use(config => {
   const token = storage.get(ACCESS_TOKEN)
   if (token) {
-    config.headers['Authorization'] = token
+    config.headers.Authorization = token
   }
   return config
 }, errorHandler)
