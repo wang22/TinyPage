@@ -23,17 +23,7 @@ const errorHandler = (error) => {
       // })
     }
     if (error.response.status === 401) {
-      // notification.error({
-      //   message: 'Unauthorized',
-      //   description: 'Authorization verification failed'
-      // })
-      // if (token) {
-      //   store.dispatch('Logout').then(() => {
-      //     setTimeout(() => {
-      //       window.location.reload()
-      //     }, 1500)
-      //   })
-      // }
+      window.location = '/auth/signin'
     }
   }
   return Promise.reject(error)

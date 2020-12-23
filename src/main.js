@@ -7,9 +7,9 @@ import { VueAxios } from './utils/request'
 import './css/style.scss'
 import components from './components'
 
-Vue.use(VueAxios)
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
+Vue.use(VueAxios)
 Vue.config.productionTip = false
 
 for (const key in components) {

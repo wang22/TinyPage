@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../layout/Index.vue'
 import Blank from '../layout/Blank.vue'
+import { info } from '@/api/auth'
 
 Vue.use(VueRouter)
 
@@ -76,6 +77,16 @@ const router = new VueRouter({
   mode: 'history',
   base: process.env.BASE_URL,
   routes
+})
+
+router.beforeEach((to, from, next) => {
+  if (to.path === '/auth/signin') {
+    next()
+  } else {
+    info().then(() => {
+      next()
+    })
+  }
 })
 
 export default router
