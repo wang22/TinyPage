@@ -131,6 +131,7 @@ export default {
       console.log(val)
     },
     doSave () {
+      const _this = this
       save({
         avatar: 'avatar',
         name: 'name',
@@ -138,6 +139,12 @@ export default {
         visibility: 4,
         meta_title: 'meta_title',
         meta_description: 'meta_description'
+      }).then(resp => {
+        if (resp.code !== 0) {
+          _this.$bvToast.toast(resp.msg, {
+            title: 'Warning'
+          })
+        }
       })
     }
   }
