@@ -6,7 +6,7 @@ export const ACCESS_TOKEN = 'Access-Token'
 
 const request = axios.create({
   // API 请求的默认前缀
-  baseURL: 'http://127.0.0.1:8080',
+  baseURL: 'http://127.0.0.1:8888',
   timeout: 6000 // 请求超时时间
 })
 
