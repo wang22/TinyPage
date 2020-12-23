@@ -32,9 +32,8 @@
         <b-form>
           <b-form-group
             id="input-group-1"
-            label="Email address:"
+            label="Meta title:"
             label-for="input-1"
-            description="We'll never share your email with anyone else."
           >
             <b-form-input
               id="input-1"
@@ -44,12 +43,12 @@
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-2" label="Your Name:" label-for="input-2">
-            <b-form-input
-              id="input-2"
-              required
-              placeholder="Enter name"
-            ></b-form-input>
+          <b-form-group id="input-group-2" label="Meta description:" label-for="input-2"  description="Recommended: 156 characters. You’ve used 0">
+            <b-form-textarea
+              id="textarea"
+              rows="3"
+              max-rows="6"
+            ></b-form-textarea>
           </b-form-group>
         </b-form>
       </template>
@@ -84,6 +83,8 @@
   </div>
 </template>
 <script>
+import { save } from '@/api/channel'
+
 export default {
   data () {
     return {
@@ -128,6 +129,16 @@ export default {
     },
     onVisiableChange (val) {
       console.log(val)
+    },
+    doSave () {
+      save({
+        avatar: 'avatar',
+        name: 'name',
+        path: 'path',
+        visibility: 4,
+        meta_title: 'meta_title',
+        meta_description: 'meta_description'
+      })
     }
   }
 }

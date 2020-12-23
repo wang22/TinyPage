@@ -42,7 +42,7 @@ const errorHandler = (error) => {
 request.interceptors.request.use(config => {
   const token = storage.get(ACCESS_TOKEN)
   if (token) {
-    config.headers.Authorization = token
+    config.headers.Authorization = 'TinyCMS ' + token
   }
   return config
 }, errorHandler)

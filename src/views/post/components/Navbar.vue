@@ -51,8 +51,8 @@
         </div>
       </div>
     </div>
-    <b-modal id="modal-1" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop>
-      <add-channel />
+    <b-modal id="modal-1" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop @ok="onSaveChannel">
+      <add-channel ref="channelModel" />
     </b-modal>
   </div>
 </template>
@@ -61,6 +61,12 @@ import AddChannel from '../modal/AddChannel.vue'
 export default {
   components: {
     AddChannel
+  },
+  methods: {
+    onSaveChannel (bvModalEvent) {
+      bvModalEvent.preventDefault()
+      this.$refs.channelModel.doSave()
+    }
   }
 }
 </script>

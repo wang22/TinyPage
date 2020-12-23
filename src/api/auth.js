@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 const authApi = {
-  Signin: '/admin/signin.json'
+  Signin: '/admin/auth/signin.json'
 }
 
 export function signin (parameter) {
