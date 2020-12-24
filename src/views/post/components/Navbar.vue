@@ -65,9 +65,7 @@ export default {
       bvModalEvent.preventDefault()
       this.$refs.addChannel.doSave(() => {
         this.$refs.channelModal.hide()
-        this.$bvToast.toast('success', {
-          title: 'Success'
-        })
+        this.$bvToast.toast('success')
       })
     },
     channelList () {

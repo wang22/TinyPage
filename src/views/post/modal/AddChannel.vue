@@ -147,9 +147,7 @@ export default {
       save(this.channel).then(resp => {
         _this.overlay = false
         if (resp.code !== 0) {
-          _this.$bvToast.toast(resp.msg, {
-            title: 'Warning'
-          })
+          _this.$bvToast.toast(resp.msg)
         } else {
           callback()
         }
