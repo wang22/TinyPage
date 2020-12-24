@@ -2,15 +2,20 @@
   <b-overlay :show="overlay" rounded="sm" variant="transparent" :opacity="0.55">
     <t-accordion title="Channel name" mark="channel name" :icon="icons.name">
       <template #right>
-        <div style="width: 200px">
+        <div style="width: 250px">
           <b-form-input placeholder="Enter channel name" v-model="channel.name"></b-form-input>
         </div>
       </template>
     </t-accordion>
     <t-accordion title="Channel path" mark="channel path" :icon="icons.path" ref="channelPath">
       <template #right>
-        <div style="width: 200px">
-          <b-form-input placeholder="Enter channel path" v-model="channel.path" @focus="channelNameDetail(true)" @blur="channelNameDetail(false)"></b-form-input>
+        <div style="width: 250px">
+          <b-input-group>
+            <b-form-input placeholder="Enter channel path" v-model="channel.path"></b-form-input>
+            <b-input-group-append>
+              <b-button variant="white" @click="channelNameDetail(browerView = !browerView)">See Demo</b-button>
+            </b-input-group-append>
+          </b-input-group>
         </div>
       </template>
       <template #collapse>
@@ -20,7 +25,7 @@
     </t-accordion>
     <t-accordion title="Visiable" mark="options" :icon="icons.visiable">
       <template #right>
-        <div style="width: 200px">
+        <div style="width: 250px">
           <t-slidebar v-model="channel.visibility" :items="visiableItems" color="var(--blue)" />
         </div>
       </template>
@@ -89,6 +94,7 @@ import { save } from '@/api/channel'
 export default {
   data () {
     return {
+      browerView: false,
       overlay: false,
       icons: {
         name: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>',
