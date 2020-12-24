@@ -6,13 +6,11 @@ import { BootstrapVue, IconsPlugin, ToastPlugin } from 'bootstrap-vue'
 import { VueAxios } from './utils/request'
 import './css/style.scss'
 import components from './components'
-import Vuelidate from 'vuelidate'
 
 Vue.use(BootstrapVue)
 Vue.use(IconsPlugin)
 Vue.use(ToastPlugin)
 Vue.use(VueAxios)
-Vue.use(Vuelidate)
 Vue.config.productionTip = false
 
 for (const key in components) {

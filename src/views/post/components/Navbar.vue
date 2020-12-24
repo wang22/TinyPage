@@ -22,20 +22,8 @@
               <li><a href="javascript:void(0)"><span class="nav-text">All</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Drafts</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Scheduled</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
-              <li class="d-flex active">
-                <a href="javascript:void(0)" class="flex-grow-1"><span class="nav-text">Java</span></a>
-                <b-button size="sm" variant="white" class="no-bg no-shadow">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mx-2"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
-                </b-button>
-              </li>
-              <li class="d-flex">
-                <a href="javascript:void(0)" class="flex-grow-1"><span class="nav-text">Java</span></a>
-                <b-button size="sm" variant="white" class="no-bg no-shadow">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mx-2"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
-                </b-button>
-              </li>
-              <li class="d-flex">
-                <a href="javascript:void(0)" class="flex-grow-1"><span class="nav-text">Java</span></a>
+              <li class="d-flex" v-for="item in channels" :key="item.id">
+                <a href="javascript:void(0)" class="flex-grow-1"><span class="nav-text">{{item.name}}</span></a>
                 <b-button size="sm" variant="white" class="no-bg no-shadow">
                   <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-edit mx-2"><path d="M20 14.66V20a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V6a2 2 0 0 1 2-2h5.34"></path><polygon points="18 2 22 6 12 16 8 16 8 12 18 2"></polygon></svg>
                 </b-button>
@@ -58,9 +46,19 @@
 </template>
 <script>
 import AddChannel from '../modal/AddChannel.vue'
+import { all as getAllChannel } from '@/api/channel'
+
 export default {
   components: {
     AddChannel
+  },
+  data () {
+    return {
+      channels: []
+    }
+  },
+  mounted () {
+    this.channelList()
   },
   methods: {
     onSaveChannel (bvModalEvent) {
@@ -70,6 +68,16 @@ export default {
         this.$bvToast.toast('success', {
           title: 'Success'
         })
+      })
+    },
+    channelList () {
+      const _this = this
+      getAllChannel().then(res => {
+        if (res.code !== 0) {
+          // TODO 处理错误
+          return
+        }
+        _this.channels = res.data.channels
       })
     }
   }
