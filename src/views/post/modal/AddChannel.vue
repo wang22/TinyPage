@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <b-overlay :show="overlay" rounded="sm" variant="transparent" :opacity="0.55">
     <t-accordion title="Channel name" mark="channel name" :icon="icons.name">
       <template #right>
         <div style="width: 200px">
@@ -21,9 +21,7 @@
     <t-accordion title="Visiable" mark="options" :icon="icons.visiable">
       <template #right>
         <div style="width: 200px">
-          <t-slidebar :items="visiableItems" color="var(--blue)" />
-          <!-- <b-badge>Public</b-badge>
-          <b-form-input type="range" @change="onVisiableChange" min="0" max="3"></b-form-input> -->
+          <t-slidebar v-model="channel.visibility" :items="visiableItems" color="var(--blue)" />
         </div>
       </template>
     </t-accordion>
@@ -31,23 +29,26 @@
       <template #collapse>
         <b-form>
           <b-form-group
-            id="input-group-1"
             label="Meta title:"
-            label-for="input-1"
+            label-for="seo-meta-title"
           >
             <b-form-input
-              id="input-1"
-              type="email"
-              required
-              placeholder="Enter email"
+              id="seo-meta-title"
+              type="text"
+              v-model="channel.meta_title"
             ></b-form-input>
           </b-form-group>
 
-          <b-form-group id="input-group-2" label="Meta description:" label-for="input-2"  description="Recommended: 156 characters. You’ve used 0">
+          <b-form-group
+            label="Meta description:"
+            label-for="seo-meta-description"
+            description="Recommended: 156 characters. You’ve used 0"
+          >
             <b-form-textarea
-              id="textarea"
+              id="seo-meta-description"
               rows="3"
               max-rows="6"
+              v-model="channel.meta_description"
             ></b-form-textarea>
           </b-form-group>
         </b-form>
@@ -80,7 +81,7 @@
         </b-tabs>
       </template>
     </t-accordion>
-  </div>
+  </b-overlay>
 </template>
 <script>
 import { save } from '@/api/channel'
@@ -88,6 +89,7 @@ import { save } from '@/api/channel'
 export default {
   data () {
     return {
+      overlay: false,
       icons: {
         name: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polygon points="14 2 18 6 7 17 3 17 3 13 14 2"></polygon><line x1="3" y1="22" x2="21" y2="22"></line></svg>',
         seo: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 13v-1m4 1v-3m4 3V8M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" /></svg>',
@@ -119,7 +121,10 @@ export default {
       ],
       channel: {
         name: '',
-        path: ''
+        path: '',
+        visibility: 1,
+        meta_title: '',
+        meta_description: ''
       }
     }
   },
@@ -130,20 +135,17 @@ export default {
     onVisiableChange (val) {
       console.log(val)
     },
-    doSave () {
+    doSave (callback) {
+      this.overlay = true
       const _this = this
-      save({
-        avatar: 'avatar',
-        name: 'name',
-        path: 'path',
-        visibility: 4,
-        meta_title: 'meta_title',
-        meta_description: 'meta_description'
-      }).then(resp => {
+      save(this.channel).then(resp => {
+        _this.overlay = false
         if (resp.code !== 0) {
           _this.$bvToast.toast(resp.msg, {
             title: 'Warning'
           })
+        } else {
+          callback()
         }
       })
     }

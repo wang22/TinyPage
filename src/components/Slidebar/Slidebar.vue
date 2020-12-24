@@ -36,7 +36,12 @@
 <script>
 import types from '../types'
 export default {
+  model: {
+    prop: 'value',
+    event: 'change'
+  },
   props: {
+    value: types.Object(),
     items: types.Array(),
     color: types.String()
   },
@@ -66,6 +71,7 @@ export default {
       this.selectName = item.name
     },
     chooseItem (item) {
+      this.$emit('change', item.value)
       this.currentItem = item
     }
   }

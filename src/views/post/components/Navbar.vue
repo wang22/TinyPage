@@ -51,8 +51,8 @@
         </div>
       </div>
     </div>
-    <b-modal id="modal-1" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop @ok="onSaveChannel">
-      <add-channel ref="channelModel" />
+    <b-modal ref="channelModal" id="modal-1" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop @ok="onSaveChannel">
+      <add-channel ref="addChannel" />
     </b-modal>
   </div>
 </template>
@@ -65,7 +65,12 @@ export default {
   methods: {
     onSaveChannel (bvModalEvent) {
       bvModalEvent.preventDefault()
-      this.$refs.channelModel.doSave()
+      this.$refs.addChannel.doSave(() => {
+        this.$refs.channelModal.hide()
+        this.$bvToast.toast('success', {
+          title: 'Success'
+        })
+      })
     }
   }
 }
