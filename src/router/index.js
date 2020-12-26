@@ -28,6 +28,11 @@ const routes = [
         component: () => import('../views/post/Publish.vue')
       },
       {
+        path: '/general',
+        name: 'General',
+        component: () => import('../views/general/General.vue')
+      },
+      {
         path: '/components/alert',
         name: 'ComponentAlert',
         component: () => import('../views/components/Alert.vue')
