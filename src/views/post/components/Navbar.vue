@@ -23,26 +23,28 @@
               <li><a href="javascript:void(0)"><span class="nav-text">All</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Drafts</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Scheduled</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
-              <tree :value="channels" :draggable="sortChannel" :maxLevel="3" @drop="channelDrop">
-                <li slot-scope="{node}" class="d-flex">
-                  <a href="javascript:void(0)" class="flex-grow-1">
-                    <span class="m-2">
-                      <svg class="avatar-svg w-24 h-24" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M768.016 320a64 64 0 0 0-64-64h-640a64 64 0 0 0 0 128c-32 32-64 68.32-64 192 0 90.224 21.504 167.808 98.368 203.28-1.472 6.688-2.368 13.6-2.368 20.72 0 49.376 37.376 89.568 85.312 94.944C217.072 971.12 294.272 1024 384.016 1024s166.944-52.88 202.688-129.056c47.936-5.376 85.312-45.568 85.312-94.944 0-7.12-0.912-14.032-2.368-20.72 76.896-35.472 98.368-113.056 98.368-203.28 0-123.68-32-160-64-192a64 64 0 0 0 64-64z" fill="#DAE2E5" p-id="3708"></path><path d="M64.016 384v128c0 70.72 57.28 128 128 128s128-21.872 128-21.872c-3.008 30.88 28.624 53.872 64 53.872s68.496-24.992 64-53.872c0 0 57.28 21.872 128 21.872s128-57.28 128-128v-128h-640z" fill="#EDD87E" p-id="3709"></path><path d="M512.016 512m-64 0a64 64 0 1 0 128 0 64 64 0 1 0-128 0Z" opacity=".1" p-id="3710"></path><path d="M256.016 512m-64 0a64 64 0 1 0 128 0 64 64 0 1 0-128 0Z" opacity=".1" p-id="3711"></path><path d="M288.016 704s0 96 96 96 96-96 96-96h-192z" fill="#EF4D4D" p-id="3712"></path><path d="M928.016 416m-96 0a96 96 0 1 0 192 0 96 96 0 1 0-192 0Z" fill="#DAE2E5" p-id="3713"></path><path d="M928.016 480c-36.528 0-69.28-15.472-92.624-40.032 10.72 41.344 47.936 72.032 92.624 72.032s81.904-30.688 92.624-72.032C997.296 464.528 964.544 480 928.016 480z" opacity=".1" p-id="3714"></path><path d="M512.016 512m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#434854" p-id="3715"></path><path d="M256.016 512m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#434854" p-id="3716"></path><path d="M474.384 736c5.568-17.632 5.632-32 5.632-32h-192s0.064 14.368 5.632 32h180.736z" opacity=".1" p-id="3717"></path><path d="M320.016 624a64 48 0 1 0 128 0 64 48 0 1 0-128 0Z" opacity=".1" p-id="3718"></path><path d="M64.016 384h640v32h-640z" opacity=".1" p-id="3719"></path><path d="M576.016 896c-18.288 0-49.44-23.12-64-32 10.496 20.496 32 44.496 60.528 56.32 5.216-8.16 10.032-16.56 14.16-25.376l0.128-0.032c-3.6 0.4-7.104 1.088-10.816 1.088zM181.2 894.912l0.128 0.032c4.128 8.816 8.944 17.216 14.16 25.376 28.528-11.808 50.032-35.808 60.528-56.32-14.56 8.88-45.712 32-64 32-3.712 0-7.216-0.688-10.816-1.088z" opacity=".1" p-id="3720"></path><path d="M862.272 346.368A95.328 95.328 0 0 1 928.016 320c24.496 0 46.592 9.44 63.568 24.56C985.2 129.712 826.96 0 608.016 0h-288c-160 0-256 96-256 256h640c100.4 0 149.712 64.128 158.256 90.368z" fill="#EF4D4D" p-id="3721"></path><path d="M248.336 96h387.376c121.84 0 229.376 30.288 314.56 85.776C888.896 66.16 764.048 0 608.016 0h-288C210.544 0 131.072 44.976 91.792 124.592 136.976 106.064 189.264 96 248.336 96z" fill="#FFFFFF" opacity=".1" p-id="3722"></path><path d="M862.272 346.336a95.12 95.12 0 0 1 29.632-19.184c1.024-0.432 2.192-0.624 3.216-0.992 4.592-1.68 9.184-3.28 14.096-4.256a93.232 93.232 0 0 1 37.152-0.064c4.16 0.816 8.064 2.192 12 3.536 1.536 0.496 3.152 0.816 4.656 1.44a94.032 94.032 0 0 1 14.944 7.568c4.88 2.976 9.376 6.4 13.632 10.16a417.376 417.376 0 0 0-3.216-40.752c-18.064-9.744-38.4-15.776-60.336-15.776-31.472 0-59.904 11.776-82.192 30.624 8.48 10.64 14.096 20.608 16.416 27.696z" opacity=".15" p-id="3723"></path></svg>
-                    </span>
-                    <span class="nav-text">{{ node.name }}</span>
-                  </a>
-                  <b-button v-if="sortChannel && !editChannel" size="sm" variant="white" class="no-bg no-shadow" style="cursor: move;">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
-                    </svg>
-                  </b-button>
-                  <b-button v-if="editChannel && !sortChannel" size="sm" variant="white" class="no-bg no-shadow">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                    </svg>
-                  </b-button>
-                </li>
-              </tree>
+              <b-overlay :show="sortable" rounded="sm">
+                <draggable handle=".handle" v-model="channels" @update="channelSort">
+                  <li v-for="channel in channels" :key="channel.id" class="d-flex">
+                    <a href="javascript:void(0)" class="flex-grow-1">
+                      <span class="m-2">
+                        <svg class="avatar-svg w-24 h-24" viewBox="0 0 1024 1024" version="1.1" xmlns="http://www.w3.org/2000/svg"><path d="M768.016 320a64 64 0 0 0-64-64h-640a64 64 0 0 0 0 128c-32 32-64 68.32-64 192 0 90.224 21.504 167.808 98.368 203.28-1.472 6.688-2.368 13.6-2.368 20.72 0 49.376 37.376 89.568 85.312 94.944C217.072 971.12 294.272 1024 384.016 1024s166.944-52.88 202.688-129.056c47.936-5.376 85.312-45.568 85.312-94.944 0-7.12-0.912-14.032-2.368-20.72 76.896-35.472 98.368-113.056 98.368-203.28 0-123.68-32-160-64-192a64 64 0 0 0 64-64z" fill="#DAE2E5" p-id="3708"></path><path d="M64.016 384v128c0 70.72 57.28 128 128 128s128-21.872 128-21.872c-3.008 30.88 28.624 53.872 64 53.872s68.496-24.992 64-53.872c0 0 57.28 21.872 128 21.872s128-57.28 128-128v-128h-640z" fill="#EDD87E" p-id="3709"></path><path d="M512.016 512m-64 0a64 64 0 1 0 128 0 64 64 0 1 0-128 0Z" opacity=".1" p-id="3710"></path><path d="M256.016 512m-64 0a64 64 0 1 0 128 0 64 64 0 1 0-128 0Z" opacity=".1" p-id="3711"></path><path d="M288.016 704s0 96 96 96 96-96 96-96h-192z" fill="#EF4D4D" p-id="3712"></path><path d="M928.016 416m-96 0a96 96 0 1 0 192 0 96 96 0 1 0-192 0Z" fill="#DAE2E5" p-id="3713"></path><path d="M928.016 480c-36.528 0-69.28-15.472-92.624-40.032 10.72 41.344 47.936 72.032 92.624 72.032s81.904-30.688 92.624-72.032C997.296 464.528 964.544 480 928.016 480z" opacity=".1" p-id="3714"></path><path d="M512.016 512m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#434854" p-id="3715"></path><path d="M256.016 512m-32 0a32 32 0 1 0 64 0 32 32 0 1 0-64 0Z" fill="#434854" p-id="3716"></path><path d="M474.384 736c5.568-17.632 5.632-32 5.632-32h-192s0.064 14.368 5.632 32h180.736z" opacity=".1" p-id="3717"></path><path d="M320.016 624a64 48 0 1 0 128 0 64 48 0 1 0-128 0Z" opacity=".1" p-id="3718"></path><path d="M64.016 384h640v32h-640z" opacity=".1" p-id="3719"></path><path d="M576.016 896c-18.288 0-49.44-23.12-64-32 10.496 20.496 32 44.496 60.528 56.32 5.216-8.16 10.032-16.56 14.16-25.376l0.128-0.032c-3.6 0.4-7.104 1.088-10.816 1.088zM181.2 894.912l0.128 0.032c4.128 8.816 8.944 17.216 14.16 25.376 28.528-11.808 50.032-35.808 60.528-56.32-14.56 8.88-45.712 32-64 32-3.712 0-7.216-0.688-10.816-1.088z" opacity=".1" p-id="3720"></path><path d="M862.272 346.368A95.328 95.328 0 0 1 928.016 320c24.496 0 46.592 9.44 63.568 24.56C985.2 129.712 826.96 0 608.016 0h-288c-160 0-256 96-256 256h640c100.4 0 149.712 64.128 158.256 90.368z" fill="#EF4D4D" p-id="3721"></path><path d="M248.336 96h387.376c121.84 0 229.376 30.288 314.56 85.776C888.896 66.16 764.048 0 608.016 0h-288C210.544 0 131.072 44.976 91.792 124.592 136.976 106.064 189.264 96 248.336 96z" fill="#FFFFFF" opacity=".1" p-id="3722"></path><path d="M862.272 346.336a95.12 95.12 0 0 1 29.632-19.184c1.024-0.432 2.192-0.624 3.216-0.992 4.592-1.68 9.184-3.28 14.096-4.256a93.232 93.232 0 0 1 37.152-0.064c4.16 0.816 8.064 2.192 12 3.536 1.536 0.496 3.152 0.816 4.656 1.44a94.032 94.032 0 0 1 14.944 7.568c4.88 2.976 9.376 6.4 13.632 10.16a417.376 417.376 0 0 0-3.216-40.752c-18.064-9.744-38.4-15.776-60.336-15.776-31.472 0-59.904 11.776-82.192 30.624 8.48 10.64 14.096 20.608 16.416 27.696z" opacity=".15" p-id="3723"></path></svg>
+                      </span>
+                      <span class="nav-text">{{ channel.name }}</span>
+                    </a>
+                    <b-button v-if="sortChannel && !editChannel" size="sm" variant="white" class="no-bg no-shadow handle" style="cursor: move;">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+                      </svg>
+                    </b-button>
+                    <b-button v-if="editChannel && !sortChannel" size="sm" variant="white" class="no-bg no-shadow">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                      </svg>
+                    </b-button>
+                  </li>
+                </draggable>
+              </b-overlay>
               <li class="nav-header hidden-folded mt-2"><span class="d-block pt-1 text-sm text-muted">Authors</span></li>
               <li class="active"><a href="javascript:void(0)"><span class="m-2"><b-avatar class="avatar w-24"></b-avatar> </span><span class="nav-text">小王王</span></a></li>
               <li><a href="javascript:void(0)"><span class="m-2"><b-avatar class="avatar w-24"></b-avatar> </span><span class="nav-text">kkkkkkkv</span></a></li>
@@ -59,40 +61,23 @@
     </b-modal>
   </div>
 </template>
-<style>
-.he-tree--hidden{
-  display: none;
-}
-
-.he-tree--rtl{
-  direction: rtl;
-}
-
-.he-tree .tree-placeholder-node{
-  background: #ddf2f9;
-  border: 1px dashed #00d9ff;
-  height: 40px;
-}
-.he-tree .dragging .tree-node-back:hover{
-  background-color: inherit;
-}
-</style>
 <script>
 import AddChannel from '../modal/AddChannel.vue'
-import { all as getAllChannel } from '@/api/channel'
-import { Tree, Draggable } from 'he-tree-vue'
+import { all as getAllChannel, sort as sortChannel } from '@/api/channel'
+import draggable from 'vuedraggable'
 
 export default {
   components: {
     AddChannel,
-    Tree: Tree.mixPlugins([Draggable])
+    draggable
   },
   data () {
     return {
       treeData: [{ text: 'node 1', children: [{ text: 'node 1-1' }, { text: 'node 1-2' }] }],
       channels: [],
       editChannel: false,
-      sortChannel: false
+      sortChannel: false,
+      sortable: false
     }
   },
   mounted () {
@@ -116,8 +101,21 @@ export default {
         _this.channels = res.data.channels
       })
     },
-    channelDrop () {
-      console.log(this.channels)
+    channelSort () {
+      this.sortable = true
+      const sortable = []
+      for (const i in this.channels) {
+        sortable.push({
+          id: this.channels[i].id,
+          sort: parseInt(i)
+        })
+      }
+      sortChannel({
+        sortable
+      }).then(() => {
+        console.log('ok')
+        this.sortable = false
+      })
     }
   }
 }
