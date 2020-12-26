@@ -5568,7 +5568,7 @@ a.close.disabled {
     line-break: auto;
     font-size: .825rem;
     word-wrap: break-word;
-    opacity: 0
+    // opacity: 0
 }
 
 .tooltip.show {
@@ -11235,7 +11235,8 @@ a.list-group-item.hover,a.list-group-item:focus,a.list-group-item:hover {
     }
 }
 
-.avatar {
+.b-avatar {
+    overflow: hidden;
     position: relative;
     line-height: 1;
     border-radius: 500px;
@@ -11254,43 +11255,43 @@ a.list-group-item.hover,a.list-group-item:focus,a.list-group-item:hover {
     box-shadow: 0 5px 10px 0 rgba(50,50,50,.15)
 }
 
-.avatar img {
+.b-avatar img {
     border-radius: inherit;
     width: 100%
 }
 
-.avatar.w-32 .avatar-status {
+.b-avatar.w-32 .avatar-status {
     margin: 0
 }
 
-.avatar.w-48 .avatar-status {
+.b-avatar.w-48 .avatar-status {
     margin: 2px
 }
 
-.avatar.w-56 .avatar-status {
+.b-avatar.w-56 .avatar-status {
     margin: 3px
 }
 
-.avatar.w-64 .avatar-status {
+.b-avatar.w-64 .avatar-status {
     margin: 4px
 }
 
-.avatar.w-96 .avatar-status {
+.b-avatar.w-96 .avatar-status {
     margin: 9px
 }
 
-.avatar.w-128 .avatar-status {
+.b-avatar.w-128 .avatar-status {
     margin: 14px
 }
 
-.avatar .avatar-status {
+.b-avatar .avatar-status {
     position: absolute;
     left: 0;
     top: 0;
     z-index: 1
 }
 
-.avatar-status {
+.b-avatar-status {
     display: inline-block;
     width: 10px;
     height: 10px;
@@ -11302,7 +11303,7 @@ a.list-group-item.hover,a.list-group-item:focus,a.list-group-item:hover {
     background-color: #fff
 }
 
-.avatar-svg {
+.b-avatar-svg {
     position: relative;
     line-height: 1;
     border-radius: 500px;

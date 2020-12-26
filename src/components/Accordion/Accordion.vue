@@ -1,10 +1,15 @@
 <template>
   <div>
     <div class="d-flex align-items-center px-4 py-3 b-t" style="cursor: pointer;" @click="showCollapse">
-      <span v-html="icon"></span>
-      <div class="px-3">
-        <div>{{title}}</div>
-        <div class="text-sm text-muted">{{mark}}</div>
+      <div v-if="$slots.left" class="d-flex">
+        <slot name="left"></slot>
+      </div>
+      <div v-else class="d-flex align-items-center">
+        <span v-html="icon"></span>
+        <div class="px-3">
+          <div>{{title}}</div>
+          <div class="text-sm text-muted">{{mark}}</div>
+        </div>
       </div>
       <div class="flex"></div>
       <span v-if="$slots.right"><slot name="right"></slot></span>

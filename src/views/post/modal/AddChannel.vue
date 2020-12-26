@@ -27,55 +27,66 @@
       <template #right>
         <div style="width: 250px">
           <b-badge>{{getVisibility(channel.visibility)}}</b-badge>
-          <!-- <t-slidebar v-model="channel.visibility" :items="visiableItems" color="var(--blue)" /> -->
           <b-form-input v-model="channel.visibility" type="range" min="0" max="3"></b-form-input>
         </div>
       </template>
     </t-accordion>
-    <t-accordion title="Avatar" mark="upload channel avatar" :icon="icons.avatar">
-      <template #collapse>
-        <b-tabs pills vertical>
-          <b-tab title="Image">
-            <b-form-file multiple></b-form-file>
-            <span v-html="avatar.svg" class="channel-avatar"></span>
-          </b-tab>
-          <b-tab title="SVG">
-            <b-form-input v-model="avatar.svg" placeholder="Enter SVG code"></b-form-input>
-            <span v-html="avatar.svg" class="channel-avatar"></span>
-          </b-tab>
-        </b-tabs>
-      </template>
-    </t-accordion>
     <t-accordion title="SEO" mark="options" :icon="icons.seo">
       <template #collapse>
-        <b-form>
-          <b-form-group
-            label="Meta title:"
-            label-for="seo-meta-title"
-          >
-            <b-form-input
-              id="seo-meta-title"
-              type="text"
-              v-model="channel.meta_title"
-            ></b-form-input>
-          </b-form-group>
+        <b-form-group
+          label="Meta title:"
+          label-for="seo-meta-title"
+        >
+          <b-form-input
+            id="seo-meta-title"
+            type="text"
+            v-model="channel.meta_title"
+          ></b-form-input>
+        </b-form-group>
 
-          <b-form-group
-            label="Meta description:"
-            label-for="seo-meta-description"
-            description="Recommended: 156 characters. You’ve used 0"
-          >
-            <b-form-textarea
-              id="seo-meta-description"
-              rows="3"
-              max-rows="6"
-              v-model="channel.meta_description"
-            ></b-form-textarea>
-          </b-form-group>
-        </b-form>
+        <b-form-group
+          label="Meta description:"
+          label-for="seo-meta-description"
+          description="Recommended: 156 characters. You’ve used 0"
+        >
+          <b-form-textarea
+            id="seo-meta-description"
+            rows="3"
+            max-rows="6"
+            v-model="channel.meta_description"
+          ></b-form-textarea>
+        </b-form-group>
       </template>
     </t-accordion>
-    <t-accordion title="Extension Field" mark="options" :icon="icons.field">
+    <t-accordion title="Avatar" mark="upload channel avatar" :icon="icons.avatar">
+      <template #left>
+        <b-avatar class="w-48 mr-3" src="https://placekitten.com/300/300" v-b-tooltip.hover title="Image Avatar"></b-avatar>
+        <span v-html="avatar.svg" class="b-avatar-svg w-48 h-48" v-b-tooltip.hover title="SVG Avatar"></span>
+      </template>
+      <template #collapse>
+        <b-form-group
+          label="Upload image avatar:"
+          label-for="seo-meta-title"
+        >
+          <b-form-file
+          placeholder="Choose a file or drop it here..."
+          drop-placeholder="Drop file here..."
+        ></b-form-file>
+        </b-form-group>
+
+        <b-form-group
+          label="SVG avatar code:"
+          label-for="seo-meta-title"
+        >
+          <b-form-textarea
+            rows="3"
+            max-rows="6"
+            v-model="avatar.svg"
+          ></b-form-textarea>
+        </b-form-group>
+      </template>
+    </t-accordion>
+    <!-- <t-accordion title="Extension Field" mark="options" :icon="icons.field">
       <template #collapse>
         <b-tabs pills vertical>
           <b-tab title="Blog" active>
@@ -101,7 +112,7 @@
           <b-tab title="Add New"><b-card-text>Tab contents 3</b-card-text></b-tab>
         </b-tabs>
       </template>
-    </t-accordion>
+    </t-accordion> -->
   </b-overlay>
 </template>
 <style>
@@ -130,32 +141,10 @@ export default {
         visiable: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" /></svg>',
         field: '<svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17V7m0 10a2 2 0 01-2 2H5a2 2 0 01-2-2V7a2 2 0 012-2h2a2 2 0 012 2m0 10a2 2 0 002 2h2a2 2 0 002-2M9 7a2 2 0 012-2h2a2 2 0 012 2m0 10V7m0 10a2 2 0 002 2h2a2 2 0 002-2V7a2 2 0 00-2-2h-2a2 2 0 00-2 2" /></svg>'
       },
-      // visiableItems: [
-      //   {
-      //     value: 1,
-      //     name: 'Private',
-      //     title: 'Private'
-      //   },
-      //   {
-      //     value: 2,
-      //     name: 'Paid Member Only',
-      //     title: 'Paid'
-      //   },
-      //   {
-      //     value: 3,
-      //     name: 'Member Only',
-      //     title: 'Member'
-      //   },
-      //   {
-      //     value: 4,
-      //     name: 'Public',
-      //     title: 'Public'
-      //   }
-      // ],
       channel: {
         name: '',
         path: '',
-        visibility: 2,
+        visibility: 3,
         meta_title: '',
         meta_description: ''
       }
