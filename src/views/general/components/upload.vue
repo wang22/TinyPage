@@ -38,7 +38,7 @@
             label-for="seo-meta-description"
             description="* is all type"
           >
-            <b-form-tags :value="['jpg','png','gif']"></b-form-tags>
+            <b-form-tags :value="['jpg','png','gif']" tag-variant="light" :tag-class="['ddddd']"></b-form-tags>
           </b-form-group>
           <b-button variant="primary">Save</b-button>
         </template>

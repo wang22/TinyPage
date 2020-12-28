@@ -28,6 +28,26 @@ const routes = [
         component: () => import('../views/post/Publish.vue')
       },
       {
+        path: '/staff',
+        name: 'Staff',
+        component: () => import('../views/staff/Staff.vue')
+      },
+      {
+        path: '/member',
+        name: 'Member',
+        component: () => import('../views/member/Member.vue')
+      },
+      {
+        path: '/codeinject',
+        name: 'CodeInject',
+        component: () => import('../views/codeinject/CodeInject.vue')
+      },
+      {
+        path: '/design',
+        name: 'Design',
+        component: () => import('../views/design/Design.vue')
+      },
+      {
         path: '/general',
         name: 'General',
         component: () => import('../views/general/General.vue')
