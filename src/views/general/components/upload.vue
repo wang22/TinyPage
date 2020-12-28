@@ -48,6 +48,9 @@
 </template>
 <script>
 import { getByType, updateParam } from '@/api/plugin'
+import { update as updateDict, get as getDictByKey } from '@/api/dict'
+
+const uploadDictKey = 'upload:plugin'
 
 export default {
   data () {
@@ -80,7 +83,15 @@ export default {
           })
           this.params[info.plugin.id] = info.param
         }
-        console.log(this.params)
+        getDictByKey(uploadDictKey).then(res => {
+          if (res.code !== 0) {
+            // TODO 处理错误
+            return
+          }
+          const dict = res.data.dict
+          this.uploadServer = dict.value
+          this.paramForms = this.params[dict.value]
+        })
       })
     },
     changeServer () {
@@ -90,7 +101,13 @@ export default {
       this.saveServerLoading = true
       updateParam(this.paramForms).then(res => {
         this.saveServerLoading = false
-        console.log(res)
+        if (res.code !== 0) {
+          // TODO 处理错误
+          return
+        }
+        updateDict(uploadDictKey, this.uploadServer.toString()).then(res => {
+          console.log(res)
+        })
       })
     }
   }
