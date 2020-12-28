@@ -4,22 +4,24 @@
     <b-card no-body>
       <t-accordion title="Upload Server" mark="Choose upload server" :icon="icon.upload.server">
         <template #collapse>
-          <b-form-group
-            label="Choose Server:"
-            label-for="seo-meta-description"
-          >
-            <b-form-select :options="server" v-model="uploadServer" @change="changeServer"></b-form-select>
-          </b-form-group>
-          <div v-for="(form, index) in paramForms" :key="index">
+          <b-overlay :show="saveServerLoading" rounded="sm" :opacity="0.5">
             <b-form-group
-              :label="form.key"
-              :description="form.description"
+              label="Choose Server:"
               label-for="seo-meta-description"
             >
-              <b-form-input type="text" v-model="form.value" ></b-form-input>
+              <b-form-select :options="server" v-model="uploadServer" @change="changeServer"></b-form-select>
             </b-form-group>
-          </div>
-          <b-button variant="primary">Save</b-button>
+            <div v-for="(form, index) in paramForms" :key="index">
+              <b-form-group
+                :label="form.description"
+                :description="form.key"
+                label-for="seo-meta-description"
+              >
+                <b-form-input type="text" v-model="form.value" ></b-form-input>
+              </b-form-group>
+            </div>
+            <b-button variant="primary" @click="saveParam">Save</b-button>
+          </b-overlay>
         </template>
       </t-accordion>
       <t-accordion title="Upload Setting" mark="Choose upload server" :icon="icon.upload.setting">
@@ -45,7 +47,7 @@
   </div>
 </template>
 <script>
-import { getByType } from '@/api/plugin'
+import { getByType, updateParam } from '@/api/plugin'
 
 export default {
   data () {
@@ -59,7 +61,8 @@ export default {
       uploadServer: 0,
       server: [],
       params: {},
-      paramForms: []
+      paramForms: [],
+      saveServerLoading: false
     }
   },
   mounted () {
@@ -82,6 +85,13 @@ export default {
     },
     changeServer () {
       this.paramForms = this.params[this.uploadServer]
+    },
+    saveParam () {
+      this.saveServerLoading = true
+      updateParam(this.paramForms).then(res => {
+        this.saveServerLoading = false
+        console.log(res)
+      })
     }
   }
 }
