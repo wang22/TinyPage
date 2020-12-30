@@ -84,11 +84,3 @@ export default {
   }
 }
 </script>
-<style>
-.w-muted {
-  width: 10%;
-}
-.td-class {
-  color: #000 !important;
-}
-</style>

@@ -9,7 +9,7 @@
         <div class="sidenav p-2">
           <nav class="nav-border b-primary auto-nav">
             <ul class="nav">
-              <t-slide-nav-item v-for="(item, index) in nav" :key="index" :title="item.title" :badgeText="item.badge" :badgeStyle="item.badgeStyle" />
+              <t-slide-nav-item v-for="(item, index) in nav" :key="index" :subtitle="item.subtitle" :active="item.active" :title="item.title" :badgeText="item.badge" :badgeStyle="item.badgeStyle" />
               <!-- <li><a href="javascript:void(0)"><span class="nav-text">All</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Drafts</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Scheduled</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
