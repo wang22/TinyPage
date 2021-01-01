@@ -8,6 +8,7 @@
         </div>
         <div class="flex"></div>
         <div>
+          <slot name="right"></slot>
         </div>
       </div>
     </div>

@@ -2,6 +2,7 @@ import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Index from '../layout/Index.vue'
 import Blank from '../layout/Blank.vue'
+import HideNav from '../layout/HideNav.vue'
 import { info } from '@/api/auth'
 
 Vue.use(VueRouter)
@@ -22,11 +23,11 @@ const routes = [
         name: 'PostsList',
         component: () => import('../views/post/List.vue')
       },
-      {
-        path: '/posts/publish',
-        name: 'PostsPublish',
-        component: () => import('../views/post/Publish.vue')
-      },
+      // {
+      //   path: '/posts/publish',
+      //   name: 'PostsPublish',
+      //   component: () => import('../views/post/Publish.vue')
+      // },
       {
         path: '/staff',
         name: 'Staff',
@@ -93,6 +94,18 @@ const routes = [
         path: 'signin',
         name: 'AuthBlank',
         component: () => import('../views/auth/Signin.vue')
+      }
+    ]
+  },
+  {
+    path: '/posts/publish',
+    name: 'publish',
+    component: HideNav,
+    children: [
+      {
+        path: '',
+        name: 'PublishPage',
+        component: () => import('../views/post/Publish.vue')
       }
     ]
   }

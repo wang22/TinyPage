@@ -9,3 +9,13 @@
         </div>
     </div>
 </template>
+<script>
+export default {
+  data () {
+    return {
+      navClass: '',
+      isHideAside: false
+    }
+  }
+}
+</script>

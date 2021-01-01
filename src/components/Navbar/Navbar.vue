@@ -1,10 +1,7 @@
 <template>
-  <div
-    class="page-sidenav no-shrink bg-light nav-dropdown fade sticky"
-  >
+  <div class="page-sidenav no-shrink bg-light nav-dropdown fade sticky" @mouseover="$emit('mouseover')" @mouseout="$emit('mouseout')">
     <div class="sidenav h-100 modal-dialog bg-light">
       <logo />
-      <!-- Flex nav content -->
       <nav-menu />
     </div>
   </div>
