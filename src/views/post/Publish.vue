@@ -1,5 +1,5 @@
 <template>
-  <t-main-container>
+  <t-main-container title="New Post" note="Let`s write an awesome story!">
     <b-input size="lg" class="form-control-theme form-control no-bg no-shadow" style="text-align:center" placeholder="Post Title" />
     <div class="editor"><div id="editorjs"></div></div>
   </t-main-container>
