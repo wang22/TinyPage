@@ -147,6 +147,10 @@ export default {
           badge: '11'
         },
         {
+          title: 'NotChannel',
+          badge: '11'
+        },
+        {
           title: 'channel',
           slotName: 'channels'
         },

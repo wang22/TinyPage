@@ -5,7 +5,7 @@
         <slot name="left"></slot>
       </div>
       <div v-else class="d-flex align-items-center">
-        <span v-html="icon"></span>
+        <span v-html="icon" class="iconsvg"></span>
         <div class="px-3">
           <div>{{title}}</div>
           <div class="text-sm text-muted">{{mark}}</div>
@@ -22,6 +22,12 @@
     </b-collapse>
   </div>
 </template>
+<style scoped>
+.iconsvg >>> svg {
+  width: 20px;
+  height: 20px;
+}
+</style>
 <script>
 import types from '../types'
 export default {

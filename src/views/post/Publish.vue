@@ -12,15 +12,33 @@
       <div class="editor-content">
         <b-input size="lg" class="form-control-theme form-control no-bg no-shadow mb-5" style="text-align:center" placeholder="Post Title" />
         <div id="editorjs"></div>
+        <div class="d-flex">
+          <b-button block variant="outline-secondary" pill >
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send mx-2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
+            Publish
+          </b-button>
+          <b-button v-b-modal.postSetting class="ml-2" variant="outline-primary" pill v-b-tooltip.hover title="Post setting">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+            </svg>
+          </b-button>
+        </div>
       </div>
     </div>
+    <b-modal id="postSetting" title="Post Setting" size="lg" body-class="modal-no-padding" no-close-on-backdrop>
+      <post-setting></post-setting>
+    </b-modal>
   </t-main-container>
 </template>
 <script>
 import EditorJS from '@editorjs/editorjs'
 import Header from '@editorjs/header'
+import PostSetting from './modal/PostSettinng'
 
 export default {
+  components: {
+    PostSetting
+  },
   data () {
     return {
       layout: {
@@ -49,7 +67,7 @@ export default {
 .editor-content {
   border-radius: 1rem;
   background: #fff;
-  padding: 2rem 1rem 5rem;
+  padding: 2rem 1rem 1rem;
   box-shadow: 0 24px 24px -18px rgba(69,104,129,.33), 0 9px 45px 0 rgba(114,119,160,.12);
 }
 </style>

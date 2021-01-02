@@ -27,9 +27,6 @@
         </div>
       </div>
     </div>
-    <b-modal ref="channelModal" id="modal-1" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop >
-      <add-channel ref="addChannel" />
-    </b-modal>
   </div>
 </template>
 <script>
