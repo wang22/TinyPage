@@ -14,23 +14,28 @@
         <template #head(author)="data">
           <span class="text-muted">{{data.label}}</span>
         </template>
-        <template #head(status)="data">
+        <template #head(visible)="data">
           <span class="text-muted">{{data.label}}</span>
         </template>
-        <template #head(lastUpdate)="data">
+        <template #head(updated)="data">
           <span class="text-muted">{{data.label}}</span>
         </template>
         <template #cell(title)="data">
           <a href="#" class="item-title text-color">{{data.item.title}}</a>
-          <div class="item-except text-muted text-sm h-1x">{{data.item.description}}</div>
+          <div class="item-except text-muted text-sm h-1x">{{data.item.title}} description</div>
         </template>
-        <template #cell(author)="">
+        <template #cell(author)="data">
           <div class="avatar-group">
-            <b-avatar class="avatar w-32" v-b-tooltip.hover title="Tooltip directive content"></b-avatar>
+            <b-avatar class="avatar w-32" v-b-tooltip.hover :title="data.item.author"></b-avatar>
           </div>
         </template>
-        <template #cell(status)="data">
-          <h5><b-badge variant="primary">{{data.item.status}}</b-badge></h5>
+        <template #cell(visible)="data">
+          <h5>
+            <b-badge v-if="data.item.visible == 0" variant="dark">Private</b-badge>
+            <b-badge v-if="data.item.visible == 1" variant="primary">Paid Member</b-badge>
+            <b-badge v-if="data.item.visible == 2" variant="info">Member</b-badge>
+            <b-badge v-if="data.item.visible == 3" variant="success">Public</b-badge>
+          </h5>
         </template>
       </b-table>
     </div>
@@ -50,6 +55,7 @@
   </div>
 </template>
 <script>
+import { page as getPostPage } from '@/api/post'
 export default {
   data () {
     return {
@@ -64,22 +70,34 @@ export default {
           thClass: 'w-muted'
         },
         {
-          key: 'status',
-          label: 'Status',
+          key: 'visible',
+          label: 'Visible',
           thClass: 'w-muted'
         },
         {
-          key: 'lastUpdate',
+          key: 'updated',
           label: 'Last Update',
           thClass: 'w-muted'
         }
       ],
-      items: [
-        { status: true, author: '王小帅', title: 'Dickerson', description: 'data description', lastUpdate: 'Macdonald' },
-        { status: false, author: '王小帅', title: 'Larsen', description: 'data description', lastUpdate: 'Shaw' },
-        { status: false, author: '王小帅', title: 'Geneva', description: 'data description', lastUpdate: 'Wilson' },
-        { status: true, author: '王小帅', title: 'Jami', description: 'data description', lastUpdate: 'Carney' }
-      ]
+      items: []
+      // items: [
+      //   { status: true, author: '王小帅', title: 'Dickerson', description: 'data description', lastUpdate: 'Macdonald' },
+      //   { status: false, author: '王小帅', title: 'Larsen', description: 'data description', lastUpdate: 'Shaw' },
+      //   { status: false, author: '王小帅', title: 'Geneva', description: 'data description', lastUpdate: 'Wilson' },
+      //   { status: true, author: '王小帅', title: 'Jami', description: 'data description', lastUpdate: 'Carney' }
+      // ]
+    }
+  },
+  mounted () {
+    this.getPostPage()
+  },
+  methods: {
+    getPostPage () {
+      getPostPage(1, 10, 0).then(res => {
+        console.log(res)
+        this.items = res.data.page.list
+      })
     }
   }
 }
