@@ -17,7 +17,7 @@
         <template #head(visible)="data">
           <span class="text-muted">{{data.label}}</span>
         </template>
-        <template #head(updated)="data">
+        <template #head(modified)="data">
           <span class="text-muted">{{data.label}}</span>
         </template>
         <template #cell(title)="data">
@@ -75,7 +75,7 @@ export default {
           thClass: 'w-muted'
         },
         {
-          key: 'updated',
+          key: 'modified',
           label: 'Last Update',
           thClass: 'w-muted'
         }
