@@ -10,10 +10,10 @@
     </template>
     <div class="editor">
       <div class="editor-content">
-        <b-input size="lg" class="form-control-theme form-control no-bg no-shadow mb-5" style="text-align:center" placeholder="Post Title" />
+        <b-input v-model="post.title" size="lg" class="form-control-theme form-control no-bg no-shadow mb-5" style="text-align:center" placeholder="Post Title" />
         <div id="editorjs"></div>
         <div class="d-flex">
-          <b-button block variant="outline-secondary" pill >
+          <b-button block variant="outline-secondary" pill @click="savePost" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send mx-2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
             Publish
           </b-button>
@@ -26,7 +26,7 @@
       </div>
     </div>
     <b-modal id="postSetting" title="Post Setting" size="lg" body-class="modal-no-padding" no-close-on-backdrop>
-      <post-setting></post-setting>
+      <post-setting v-model="post"></post-setting>
     </b-modal>
   </t-main-container>
 </template>
@@ -34,6 +34,7 @@
 import EditorJS from '@editorjs/editorjs'
 import Header from '@editorjs/header'
 import PostSetting from './modal/PostSettinng'
+import { save as savePost } from '@/api/post'
 
 export default {
   components: {
@@ -43,17 +44,40 @@ export default {
     return {
       layout: {
         hideAside: true
-      }
+      },
+      post: {
+        title: '',
+        content: '',
+        channel: 0,
+        tags: [],
+        visible: 3,
+        publishDate: null,
+        publishTime: null
+      },
+      editor: null
     }
   },
   created () {
-    const editor = new EditorJS({
+    this.editor = new EditorJS({
       tools: {
         header: Header
       },
       placeholder: 'Let`s write an awesome story!'
     })
-    console.log(editor)
+  },
+  methods: {
+    savePost () {
+      this.editor.save().then(out => {
+        this.post.content = out
+        console.log(this.post)
+        savePost(this.post).then(res => {
+          if (res.code !== 0) {
+            return
+          }
+          console.log('save ok')
+        })
+      })
+    }
   }
 }
 </script>

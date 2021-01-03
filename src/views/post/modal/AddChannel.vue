@@ -26,8 +26,8 @@
     <t-accordion title="Visible" mark="options" :icon="icons.visible">
       <template #right>
         <div style="width: 250px">
-          <b-badge>{{getVisibility(channel.visibility)}}</b-badge>
-          <b-form-input v-model="channel.visibility" type="range" min="0" max="3"></b-form-input>
+          <b-badge>{{getVisible(channel.visible)}}</b-badge>
+          <b-form-input v-model="channel.visible" type="range" min="0" max="3"></b-form-input>
         </div>
       </template>
     </t-accordion>
@@ -144,7 +144,7 @@ export default {
       channel: {
         name: '',
         path: '',
-        visibility: 3,
+        visible: 3,
         meta_title: '',
         meta_description: ''
       }
@@ -169,7 +169,7 @@ export default {
         }
       })
     },
-    getVisibility (type) {
+    getVisible (type) {
       switch (parseInt(type)) {
         case 0: return 'Private'
         case 1: return 'Paid Only'
