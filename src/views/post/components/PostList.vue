@@ -97,7 +97,6 @@ export default {
   methods: {
     getPostPage () {
       getPostPage(1, 10, 0).then(res => {
-        console.log(res)
         this.items = res.data.page.list
       })
     }

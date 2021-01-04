@@ -43,7 +43,7 @@
       <template #right>
         <div style="width: 250px">
           <b-badge>{{getVisibility(post.visible)}}</b-badge>
-          <b-form-input @change="visibleChange" type="range" min="0" max="3"></b-form-input>
+          <b-form-input v-model="defaultVisible" @change="visibleChange" type="range" min="0" max="3"></b-form-input>
         </div>
       </template>
     </t-accordion>
@@ -156,7 +156,8 @@ export default {
       visibility: 3,
       channels: [],
       browerView: false,
-      channelValue: {}
+      channelValue: {},
+      defaultVisible: 3
     }
   },
   mounted () {
@@ -175,6 +176,7 @@ export default {
       getAllChannel().then(res => {
         if (res.code !== 0) {
           // TODO 处理错误
+          return
         }
         this.channels = res.data.channels
       })
