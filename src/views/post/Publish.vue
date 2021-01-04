@@ -10,7 +10,7 @@
     </template>
     <div class="editor">
       <div class="editor-content">
-        <b-input v-model="post.title" size="lg" class="form-control-theme form-control no-bg no-shadow mb-5" style="text-align:center" placeholder="Post Title" />
+        <b-input v-model="post.title" autocomplete="off" size="lg" class="form-control-theme form-control no-bg no-shadow mb-5" style="text-align:center" placeholder="Post Title" />
         <div id="editorjs"></div>
         <div class="d-flex">
           <b-button block variant="outline-secondary" pill @click="savePost" >
@@ -48,11 +48,20 @@ export default {
       post: {
         title: '',
         content: '',
+        autoImage: true,
+        image: '',
+        autoExcerpt: true,
+        excerpt: '',
+        url: '',
         channel: 0,
         tags: [],
         visible: 3,
         publishDate: null,
-        publishTime: null
+        publishTime: null,
+        meta: {
+          title: '',
+          description: ''
+        }
       },
       editor: null
     }

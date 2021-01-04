@@ -1,13 +1,15 @@
 <template>
   <div>
     <div class="scroll-y mx-3 mb-0">
-      <b-table class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="items">
-        <template #table-busy>
-          <div class="text-center text-primary my-2">
-            <b-spinner class="align-middle"></b-spinner><br><br>
-            <strong>Loading...</strong>
-          </div>
-        </template>
+      <b-jumbotron v-show="!items" class="mt-3" header="Empty" lead="You can publish first post for now!">
+        <b-button size="sm" variant="primary" style="white-space: nowrap;" @click="$router.push('/posts/publish')">
+          <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6" />
+          </svg>
+          New Post
+        </b-button>
+      </b-jumbotron>
+      <b-table v-show="items" class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="items">
         <template #head(title)="data">
           <span class="text-muted">{{data.label}}</span>
         </template>
@@ -22,7 +24,7 @@
         </template>
         <template #cell(title)="data">
           <a href="#" class="item-title text-color">{{data.item.title}}</a>
-          <div class="item-except text-muted text-sm h-1x">{{data.item.title}} description</div>
+          <div class="item-except text-muted text-sm h-1x">{{data.item.excerpt}}</div>
         </template>
         <template #cell(author)="data">
           <div class="avatar-group">
@@ -39,7 +41,7 @@
         </template>
       </b-table>
     </div>
-    <div class="px-3 mt-auto">
+    <div class="px-3 mt-auto" v-show="items">
       <div class="d-flex align-items-center">
         <div class="flex d-flex flex-row">
           <b-pagination
