@@ -13,9 +13,11 @@ export function save (param) {
   })
 }
 
-export function page (page, size, lastID) {
+export function page (page, size, lastID, query) {
+  query.lastID = lastID
   return request({
-    url: `${postApi.page}${page}/${size}/list.json?lastID=${lastID}`,
-    method: 'get'
+    url: `${postApi.page}${page}/${size}/list.json`,
+    method: 'get',
+    params: query
   })
 }

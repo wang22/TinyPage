@@ -9,10 +9,8 @@
         <div class="sidenav p-2">
           <nav class="nav-border b-primary auto-nav">
             <ul class="nav">
-              <div v-for="(item, index) in nav" :key="index" >
-                <t-slide-nav-item v-if="!item.slotName" :subtitle="item.subtitle" :active="item.active" :title="item.title" :badgeText="item.badge" :badgeStyle="item.badgeStyle" />
-                <slot v-else :name="item.slotName"></slot>
-              </div>
+              <t-slide-nav-item v-for="(item, index) in nav" :key="index" :subtitle="item.subtitle" v-model="item.active" :title="item.title" :badgeText="item.badge" :badgeStyle="item.badgeStyle" />
+              <!-- <slot v-else :name="item.slotName"></slot> -->
               <!-- <li><a href="javascript:void(0)"><span class="nav-text">All</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Drafts</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
               <li><a href="javascript:void(0)"><span class="nav-text">Scheduled</span> <span class="nav-badge"><b class="badge badge-sm badge-pill gd-danger">15</b></span></a></li>
