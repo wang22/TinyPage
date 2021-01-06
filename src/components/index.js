@@ -5,6 +5,10 @@ import TAccordion from './Accordion/Accordion.vue'
 import TNavbar from './Navbar/Navbar.vue'
 import TMainHeader from './Main/Header.vue'
 import TMainContainer from './Main/Container.vue'
+import TAside from './Aside/Aside'
+import TAsideHeader from './Aside/AsideHeader'
+import TAsideItem from './Aside/AsideItem'
+import TAsideItemList from './Aside/AsideItemList'
 
 export default {
   TSlideNav,
@@ -13,5 +17,9 @@ export default {
   TAccordion,
   TNavbar,
   TMainHeader,
-  TMainContainer
+  TMainContainer,
+  TAside,
+  TAsideHeader,
+  TAsideItem,
+  TAsideItemList
 }

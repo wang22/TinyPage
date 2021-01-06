@@ -1,5 +1,48 @@
 <template>
-  <div class="fade aside aside-sm">
+  <t-aside>
+    <t-aside-header title="Channel">
+      <template #button>
+        <b-dropdown size="sm" class="no-bg no-shadow no-caret" variant="icon">
+          <template #button-content>
+            <svg xmlns="http://www.w3.org/2000/svg"  white="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 5v.01M12 12v.01M12 19v.01M12 6a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2zm0 7a1 1 0 110-2 1 1 0 010 2z" />
+            </svg>
+          </template>
+          <b-dropdown-item v-b-modal.addChannel>
+            Add New Channel
+          </b-dropdown-item>
+          <b-dropdown-item href="#" @click="sortChannel = !sortChannel; editChannel = false">Change Channel Sort</b-dropdown-item>
+          <b-dropdown-item href="#" @click="editChannel = !editChannel; sortChannel = false">Edit Channel</b-dropdown-item>
+        </b-dropdown>
+      </template>
+    </t-aside-header>
+    <t-aside-item-list>
+      <t-aside-item v-for="item in nav" :key="item.title" :id="item.title" :title="item.title" :active="item.active" :badge="item.badge" @click="channelClick" />
+      <draggable handle=".handle" v-model="channels" @update="channelSort" class="nav-border b-primary nav">
+        <t-aside-item v-for="channel in channels" :class="sortChannel ? 'handle' : ''" :key="channel.id" :id="channel.id.toString()" :title="channel.name" :active="channel.active" :badge="channel.badge" :svg="channel.avatar_svg ? channel.avatar_svg: defaultChannelAvatar" @click="channelClick">
+          <template>
+            <b-button v-if="sortChannel && !editChannel" size="sm" variant="white" class="no-bg no-shadow handle" style="cursor: move;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 8h16M4 16h16" />
+              </svg>
+            </b-button>
+            <b-button v-if="editChannel && !sortChannel" size="sm" variant="white" class="no-bg no-shadow">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+              </svg>
+            </b-button>
+          </template>
+        </t-aside-item>
+      </draggable>
+    </t-aside-item-list>
+    <t-aside-item-list title="Author">
+      <t-aside-item v-for="(item, index) in nav" :key="index" :title="item.title" v-model="item.active" :badge="item.badge" />
+    </t-aside-item-list>
+    <b-modal ref="channelModal" id="addChannel" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop @ok="onSaveChannel">
+      <add-channel ref="addChannel" />
+    </b-modal>
+  </t-aside>
+  <!-- <div class="fade aside aside-sm">
     <div class="modal-dialog d-flex flex-column w-md bg-body">
       <t-slide-nav title="Channel" :nav="nav">
         <template #titleButton>
@@ -41,7 +84,7 @@
     <b-modal ref="channelModal" id="addChannel" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop @ok="onSaveChannel">
       <add-channel ref="addChannel" />
     </b-modal>
-  </div>
+  </div> -->
 </template>
 <script>
 import AddChannel from '../modal/AddChannel.vue'
@@ -72,22 +115,6 @@ export default {
         {
           title: 'Scheduled',
           badge: '11'
-        },
-        {
-          title: 'NotChannel',
-          badge: '11'
-        },
-        // {
-        //   title: 'channel',
-        //   slotName: 'channels'
-        // },
-        {
-          title: 'Authors',
-          subtitle: true
-        },
-        {
-          title: 'Tags',
-          subtitle: true
         }
       ],
       defaultChannelAvatar: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>'
