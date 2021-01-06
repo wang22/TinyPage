@@ -17,9 +17,9 @@
       </template>
     </t-aside-header>
     <t-aside-item-list>
-      <t-aside-item v-for="item in nav" :key="item.title" :id="item.title" :title="item.title" :active="item.active" :badge="item.badge" @click="channelClick" />
+      <t-aside-item v-for="item in nav" :key="item.title" :id="item.title" :title="item.title" :active="item.active" :badge="item.badge" @click="channelClick(item)" />
       <draggable handle=".handle" v-model="channels" @update="channelSort" class="nav-border b-primary nav">
-        <t-aside-item v-for="channel in channels" :class="sortChannel ? 'handle' : ''" :key="channel.id" :id="channel.id.toString()" :title="channel.name" :active="channel.active" :badge="channel.badge" :svg="channel.avatar_svg ? channel.avatar_svg: defaultChannelAvatar" @click="channelClick">
+        <t-aside-item v-for="channel in channels" :class="sortChannel ? 'handle' : ''" :key="channel.id" :id="channel.id.toString()" :title="channel.name" :active="channel.active" :badge="channel.badge" :svg="channel.avatar_svg ? channel.avatar_svg: defaultChannelAvatar" @click="channelClick(channel)">
           <template>
             <b-button v-if="sortChannel && !editChannel" size="sm" variant="white" class="no-bg no-shadow handle" style="cursor: move;">
               <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -36,7 +36,10 @@
       </draggable>
     </t-aside-item-list>
     <t-aside-item-list title="Author">
-      <t-aside-item v-for="(item, index) in nav" :key="index" :title="item.title" v-model="item.active" :badge="item.badge" />
+      <!-- <t-aside-item v-for="(item, index) in nav" :key="index" :title="item.title" v-model="item.active" :badge="item.badge" /> -->
+    </t-aside-item-list>
+    <t-aside-item-list title="Tags">
+      <!-- <t-aside-item v-for="(item, index) in nav" :key="index" :title="item.title" v-model="item.active" :badge="item.badge" /> -->
     </t-aside-item-list>
     <b-modal ref="channelModal" id="addChannel" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop @ok="onSaveChannel">
       <add-channel ref="addChannel" />
@@ -110,11 +113,13 @@ export default {
         },
         {
           title: 'Drafts',
-          badge: '1'
+          badge: '1',
+          active: false
         },
         {
           title: 'Scheduled',
-          badge: '11'
+          badge: '11',
+          active: false
         }
       ],
       defaultChannelAvatar: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>'
@@ -140,7 +145,12 @@ export default {
           // TODO 处理错误
           return
         }
-        _this.channels = res.data.channels
+        const tmp = []
+        for (const index in res.data.channels) {
+          res.data.channels[index].active = false
+          tmp.push(res.data.channels[index])
+        }
+        _this.channels = tmp
       })
     },
     channelSort () {
@@ -161,6 +171,24 @@ export default {
         }
         this.sortable = false
       })
+    },
+    channelClick (curr) {
+      for (const index in this.nav) {
+        const item = this.nav[index]
+        if (curr.title) {
+          item.active = curr.title === item.title
+        } else {
+          item.active = false
+        }
+      }
+      for (const index in this.channels) {
+        const item = this.channels[index]
+        if (curr.name) {
+          item.active = curr.name === item.name
+        } else {
+          item.active = false
+        }
+      }
     }
   }
 }
