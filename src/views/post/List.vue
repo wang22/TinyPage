@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex fixed-content">
-    <post-navbar />
+    <post-navbar @changeChannel="onChangeChannel" />
     <div class="d-flex flex">
       <div class="d-flex flex-column flex">
         <div class="px-3 pt-3">
@@ -32,7 +32,7 @@
             </b-input-group>
           </div>
         </div>
-        <post-list />
+        <post-list ref="postList" />
       </div>
     </div>
   </div>
@@ -45,6 +45,14 @@ export default {
   components: {
     PostNavbar,
     PostList
+  },
+  methods: {
+    onChangeChannel (id) {
+      console.log(id)
+      this.$refs.postList.setQueryParam({
+        channelID: id
+      })
+    }
   }
 }
 </script>

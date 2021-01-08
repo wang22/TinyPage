@@ -104,6 +104,14 @@ export default {
     pageChange (num) {
       const lastID = this.page.list[this.page.list.length - 1].id
       this.getPostPage(num, this.pageSize, lastID)
+    },
+    setQueryParam (param) {
+      const query = JSON.parse(JSON.stringify(this.query))
+      for (const key in param) {
+        query[key] = param[key]
+      }
+      this.query = query
+      this.getPostPage(1, this.pageSize, 0)
     }
   }
 }

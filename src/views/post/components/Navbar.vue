@@ -185,6 +185,9 @@ export default {
         const item = this.channels[index]
         if (curr.name) {
           item.active = curr.name === item.name
+          if (item.active) {
+            this.$emit('changeChannel', item.id)
+          }
         } else {
           item.active = false
         }
