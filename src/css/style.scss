@@ -5303,7 +5303,7 @@ a.close.disabled {
 
 .b-toast {
     .toast {
-        margin: 0 auto;
+        margin: 5px auto;
         min-width: 250px;
         max-width: 400px;
         font-size: 1rem;
@@ -5311,8 +5311,6 @@ a.close.disabled {
         color: var(--light);
         box-shadow: 0 0.25rem 0.75rem rgba(0,0,0,.1);
         border-radius: .25rem;
-        border-top-left-radius: 0;
-        border-top-right-radius: 0;
         &-header {
             display: none;
             // display: -ms-flexbox;

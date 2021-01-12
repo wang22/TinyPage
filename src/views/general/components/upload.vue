@@ -26,21 +26,23 @@
       </t-accordion>
       <t-accordion title="Upload Setting" mark="Choose upload server" :icon="icon.upload.setting">
         <template #collapse>
-          <b-form-group
-            label="Max File Size:"
-            label-for="seo-meta-description"
-            description="Max upload file size: 100MB"
-          >
-            <b-form-input type="number" ></b-form-input>
-          </b-form-group>
-          <b-form-group
-            label="File Type:"
-            label-for="seo-meta-description"
-            description="* is all type"
-          >
-            <b-form-tags :value="['jpg','png','gif']" tag-variant="light" :tag-class="['ddddd']"></b-form-tags>
-          </b-form-group>
-          <b-button variant="primary">Save</b-button>
+          <b-overlay :show="saveParamLoading" rounded="sm" :opacity="0.5">
+            <b-form-group
+              label="Max File Size:"
+              label-for="seo-meta-description"
+              :description="`Max upload file size: ${fileMaxSize}MB`"
+            >
+              <b-form-input type="number" v-model="fileMaxSize"></b-form-input>
+            </b-form-group>
+            <b-form-group
+              label="File Type:"
+              label-for="seo-meta-description"
+              description="* is all type"
+            >
+              <multiselect v-model="fileType.value" tag-placeholder="选择上传文件类型" placeholder="手动输入类型" label="name" track-by="name" :options="fileType.options" :multiple="true" :taggable="true" @tag="addTag"></multiselect>
+            </b-form-group>
+            <b-button variant="primary" @click="saveUploadParam">Save</b-button>
+          </b-overlay>
         </template>
       </t-accordion>
     </b-card>
@@ -49,10 +51,17 @@
 <script>
 import { getByType, updateParam } from '@/api/plugin'
 import { update as updateDict, get as getDictByKey } from '@/api/dict'
+import Multiselect from 'vue-multiselect'
+import '../../../css/multiselect.scss'
 
 const uploadDictKey = 'upload:plugin'
+const uploadFileTypeKey = 'upload:file_type'
+const uploadFileMaxSizeKey = 'upload:file_max_size'
 
 export default {
+  components: {
+    Multiselect
+  },
   data () {
     return {
       icon: {
@@ -65,11 +74,67 @@ export default {
       server: [],
       params: {},
       paramForms: [],
-      saveServerLoading: false
+      saveServerLoading: false,
+      saveParamLoading: false,
+      fileType: {
+        value: [],
+        options: [
+          { name: '*' },
+          { name: '3gpp' },
+          { name: 'ac3' },
+          { name: 'asf' },
+          { name: 'au' },
+          { name: 'css' },
+          { name: 'csv' },
+          { name: 'doc' },
+          { name: 'dot' },
+          { name: 'dtd' },
+          { name: 'dwg' },
+          { name: 'dxf' },
+          { name: 'gif' },
+          { name: 'htm' },
+          { name: 'html' },
+          { name: 'jp2' },
+          { name: 'jpe' },
+          { name: 'jpeg' },
+          { name: 'jpg' },
+          { name: 'js' },
+          { name: 'json' },
+          { name: 'mp2' },
+          { name: 'mp3' },
+          { name: 'mp4' },
+          { name: 'mpeg' },
+          { name: 'mpg' },
+          { name: 'mpp' },
+          { name: 'ogg' },
+          { name: 'pdf' },
+          { name: 'png' },
+          { name: 'pot' },
+          { name: 'pps' },
+          { name: 'ppt' },
+          { name: 'rtf' },
+          { name: 'svf' },
+          { name: 'tif' },
+          { name: 'tiff' },
+          { name: 'txt' },
+          { name: 'wdb' },
+          { name: 'wps' },
+          { name: 'xhtml' },
+          { name: 'xlc' },
+          { name: 'xlm' },
+          { name: 'xls' },
+          { name: 'xlt' },
+          { name: 'xlw' },
+          { name: 'xml' },
+          { name: 'zip' }
+        ]
+      },
+      fileMaxSize: 0
     }
   },
   mounted () {
     this.getUploadPlugin()
+    this.getUploadParam()
   },
   methods: {
     getUploadPlugin () {
@@ -94,6 +159,29 @@ export default {
         })
       })
     },
+    getUploadParam () {
+      getDictByKey(uploadFileMaxSizeKey).then(res => {
+        if (res.code !== 0) {
+          // TODO 处理错误
+          return
+        }
+        const dict = res.data.dict
+        this.fileMaxSize = parseInt(dict.value)
+      })
+      getDictByKey(uploadFileTypeKey).then(res => {
+        if (res.code !== 0) {
+          // TODO 处理错误
+          return
+        }
+        const dict = res.data.dict
+        const types = dict.value.split(',')
+        for (const i in types) {
+          this.fileType.value.push({
+            name: types[i]
+          })
+        }
+      })
+    },
     changeServer () {
       this.paramForms = this.params[this.uploadServer]
     },
@@ -107,6 +195,21 @@ export default {
         }
         updateDict(uploadDictKey, this.uploadServer.toString()).then(res => {
           console.log(res)
+        })
+      })
+    },
+    addTag (newTag) {
+      const tag = {
+        name: newTag
+      }
+      this.fileType.options.push(tag)
+      this.fileType.value.push(tag)
+    },
+    saveUploadParam () {
+      this.saveParamLoading = true
+      updateDict(uploadFileMaxSizeKey, this.fileMaxSize.toString()).then(() => {
+        updateDict(uploadFileTypeKey, this.fileType.value.map(t => t.name).join(',')).then(() => {
+          this.saveParamLoading = false
         })
       })
     }

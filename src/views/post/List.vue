@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex fixed-content">
-    <post-navbar @changeChannel="onChangeChannel" />
+    <post-navbar @changeChannel="onChangeChannel" @changeStatus="onChangeStatus" />
     <div class="d-flex flex">
       <div class="d-flex flex-column flex">
         <div class="px-3 pt-3">
@@ -48,9 +48,15 @@ export default {
   },
   methods: {
     onChangeChannel (id) {
-      console.log(id)
+      this.setPostParam(id, 0)
+    },
+    onChangeStatus (status) {
+      this.setPostParam(0, status)
+    },
+    setPostParam (channel, status) {
       this.$refs.postList.setQueryParam({
-        channelID: id
+        channelID: channel,
+        status: status
       })
     }
   }
