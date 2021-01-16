@@ -12,11 +12,11 @@
               New Post
             </b-button>
             <b-button-group>
-              <b-dropdown size="sm" variant="white" text="Access">
+              <b-dropdown size="sm" variant="white" text="Access: Public">
                 <b-dropdown-item>All</b-dropdown-item>
                 <b-dropdown-item>Public</b-dropdown-item>
                 <b-dropdown-item>Members-only</b-dropdown-item>
-                <b-dropdown-item>Paid-Member-only</b-dropdown-item>
+                <b-dropdown-item>Private</b-dropdown-item>
               </b-dropdown>
               <b-dropdown size="sm" variant="white" text="Sort by: Newest">
                 <b-dropdown-item>Newest</b-dropdown-item>

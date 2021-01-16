@@ -48,23 +48,16 @@ export default {
           active: true
         },
         {
-          title: 'The Owner',
-          badge: '1',
-          badgeStyle: 'dark'
+          title: 'Owner'
         },
         {
-          title: 'Administrators',
-          badge: '11'
+          title: 'Administrators'
         },
         {
           title: 'Editors'
         },
         {
           title: 'Authors'
-        },
-        {
-          title: 'Group',
-          subtitle: true
         }
       ]
     }

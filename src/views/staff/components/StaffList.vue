@@ -1,7 +1,7 @@
 <template>
   <div>
     <div class="scroll-y mx-3 mb-0">
-      <b-table class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="items">
+      <b-table class="table-theme table-row v-middle" :busy="false" :fields="fields" :items="page.list">
         <template #table-busy>
           <div class="text-center text-primary my-2">
             <b-spinner class="align-middle"></b-spinner><br><br>
@@ -22,12 +22,15 @@
             <b-avatar class="w-40 mr-2" :src="data.item.avatar" ></b-avatar>
             <div class="flex">
               <a href="#" class="item-author text-color">{{ data.item.nickname }}</a>
-              <div class="item-mail text-muted h-1x d-none d-sm-block">{{ data.item.account }}</div>
+              <div class="item-mail text-muted h-1x d-none d-sm-block">{{ data.item.username }}</div>
             </div>
           </div>
         </template>
         <template #cell(role)="data">
-          <h5><b-badge variant="primary">{{data.item.role}}</b-badge></h5>
+          <b-badge variant="primary" v-if="data.item.role === 1">Owner</b-badge>
+          <b-badge variant="info" v-if="data.item.role === 2">Administrator</b-badge>
+          <b-badge variant="secondary" v-if="data.item.role === 3">Editor</b-badge>
+          <b-badge variant="secondary" v-if="data.item.role === 4">Author</b-badge>
         </template>
         <template #cell(posts)="data">
           <a href="#" class="text-muted">{{data.item.posts}}</a>
@@ -38,18 +41,19 @@
       <div class="d-flex align-items-center">
         <div class="flex d-flex flex-row">
           <b-pagination
-            :total-rows="30"
-            :per-page="1"
+            v-model="page.page"
+            :total-rows="page.count"
+            :per-page="page.size"
             :limit="10"
-            size="sm"
           ></b-pagination>
         </div>
-        <div><span class="text-muted">Total:</span> <span id="count">20</span></div>
+        <div><span class="text-muted">Total:</span> <span id="count">{{page.count}}</span></div>
       </div>
     </div>
   </div>
 </template>
 <script>
+import { page as getPageData } from '@/api/member'
 export default {
   data () {
     return {
@@ -70,12 +74,20 @@ export default {
           thClass: 'w-muted'
         }
       ],
-      items: [
-        { role: true, nickname: '王小帅', account: 'Dickerson', posts: 3, avatar: 'http://wx2.sinaimg.cn/mw600/00869HDlly1gm55pjcr38j30bi0eq0t5.jpg' },
-        { role: false, nickname: '王小帅', account: 'Larsen', posts: 3, avatar: 'http://wx2.sinaimg.cn/mw600/00869HDlly1gm55pjcr38j30bi0eq0t5.jpg' },
-        { role: false, nickname: '王小帅', account: 'Geneva', posts: 3, avatar: 'http://wx2.sinaimg.cn/mw600/00869HDlly1gm55pjcr38j30bi0eq0t5.jpg' },
-        { role: true, nickname: '王小帅', account: 'Jami', posts: 3, avatar: 'http://wx2.sinaimg.cn/mw600/00869HDlly1gm55pjcr38j30bi0eq0t5.jpg' }
-      ]
+      page: {},
+      pageSize: 20,
+      query: {}
+    }
+  },
+  mounted () {
+    this.getMemberPage(1, this.pageSize, 0)
+  },
+  methods: {
+    getMemberPage (page, size, lastID) {
+      getPageData(page, size, lastID, this.query).then(res => {
+        this.page = res.data.page
+        window.scrollTo(0, 0)
+      })
     }
   }
 }
