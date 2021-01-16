@@ -88,6 +88,14 @@ export default {
         this.page = res.data.page
         window.scrollTo(0, 0)
       })
+    },
+    setQueryParam (param) {
+      const query = JSON.parse(JSON.stringify(this.query))
+      for (const key in param) {
+        query[key] = param[key]
+      }
+      this.query = query
+      this.getMemberPage(1, this.pageSize, 0)
     }
   }
 }

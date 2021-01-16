@@ -37,12 +37,6 @@
         </draggable>
       </b-overlay>
     </t-aside-item-list>
-    <t-aside-item-list title="Author">
-      <!-- <t-aside-item v-for="(item, index) in nav" :key="index" :title="item.title" v-model="item.active" :badge="item.badge" /> -->
-    </t-aside-item-list>
-    <t-aside-item-list title="Tags">
-      <!-- <t-aside-item v-for="(item, index) in nav" :key="index" :title="item.title" v-model="item.active" :badge="item.badge" /> -->
-    </t-aside-item-list>
     <b-modal ref="channelModal" id="addChannel" size="lg" body-class="modal-no-padding" title="Add New Channel" no-close-on-backdrop @ok="onSaveChannel">
       <add-channel ref="addChannel" />
     </b-modal>
@@ -84,6 +78,7 @@ export default {
           status: 3
         }
       ],
+      authors: [],
       defaultChannelAvatar: '<svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10" /></svg>'
     }
   },
