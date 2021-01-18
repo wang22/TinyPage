@@ -47,6 +47,11 @@
         </div>
       </template>
     </t-accordion>
+    <t-accordion title="Publish Time" mark="channel name" :icon="icons.time">
+      <template #right>
+        <b-form-input type="datetime-local" />
+      </template>
+    </t-accordion>
     <t-accordion title="Post Image" mark="channel name" :icon="icons.img">
       <template #collapse>
         <b-form-group
@@ -80,22 +85,6 @@
             rows="3"
             max-rows="6"
           ></b-form-textarea>
-        </b-form-group>
-      </template>
-    </t-accordion>
-    <t-accordion title="Publish Time" mark="channel name" :icon="icons.time">
-      <template #collapse>
-        <b-form-group
-          label="选择发布日期:"
-          label-for="seo-meta-title"
-        >
-          <b-form-datepicker v-model="post.publishDate" calendar-width="500px"></b-form-datepicker>
-        </b-form-group>
-        <b-form-group
-          label="选择发布时间:"
-          label-for="seo-meta-title"
-        >
-          <b-form-timepicker v-model="post.publishTime" locale="en"></b-form-timepicker>
         </b-form-group>
       </template>
     </t-accordion>
