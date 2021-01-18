@@ -9,6 +9,7 @@ import TAside from './Aside/Aside'
 import TAsideHeader from './Aside/AsideHeader'
 import TAsideItem from './Aside/AsideItem'
 import TAsideItemList from './Aside/AsideItemList'
+import TEditor from './Editor/Editor'
 
 export default {
   TSlideNav,
@@ -21,5 +22,6 @@ export default {
   TAside,
   TAsideHeader,
   TAsideItem,
-  TAsideItemList
+  TAsideItemList,
+  TEditor
 }

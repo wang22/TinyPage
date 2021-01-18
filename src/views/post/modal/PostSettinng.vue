@@ -89,7 +89,7 @@
           label="选择发布日期:"
           label-for="seo-meta-title"
         >
-          <b-form-datepicker v-model="post.publishDate"></b-form-datepicker>
+          <b-form-datepicker v-model="post.publishDate" calendar-width="500px"></b-form-datepicker>
         </b-form-group>
         <b-form-group
           label="选择发布时间:"
