@@ -11,7 +11,7 @@
     <div class="editor">
       <div class="editor-content">
         <b-input v-model="post.title" autocomplete="off" size="lg" class="form-control-theme form-control no-bg no-shadow mb-5" style="text-align:center" placeholder="Post Title" />
-        <t-editor />
+        <t-editor ref="editor" placeholder="Let`s write an awesome story!" />
         <div class="d-flex">
           <b-button block variant="outline-secondary" pill @click="savePost" >
             <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-send mx-2"><line x1="22" y1="2" x2="11" y2="13"></line><polygon points="22 2 15 22 11 13 2 9 22 2"></polygon></svg>
@@ -67,9 +67,8 @@ export default {
   },
   methods: {
     savePost () {
-      this.editor.save().then(out => {
-        this.post.content = out
-        console.log(this.post)
+      this.$refs.editor.getContent().then(res => {
+        this.post.content = res
         savePost(this.post).then(res => {
           if (res.code !== 0) {
             return

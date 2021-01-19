@@ -1,7 +1,7 @@
 import request from '@/utils/request'
 
 const dictApi = {
-  update: '/admin/dict.json'
+  update: '/admin/dict/json'
 }
 
 export function update (key, value) {
@@ -17,7 +17,7 @@ export function update (key, value) {
 
 export function get (key) {
   return request({
-    url: `/admin/dict/${key}/info.json`,
+    url: `/admin/dict/${key}/info/json`,
     method: 'get'
   })
 }

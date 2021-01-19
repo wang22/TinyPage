@@ -1,9 +1,9 @@
 import request from '@/utils/request'
 
 const channelApi = {
-  save: '/admin/channel.json',
-  all: '/admin/channels.json',
-  sort: '/admin/channels/sort.json'
+  save: '/admin/channel/json',
+  all: '/admin/channels/json',
+  sort: '/admin/channels/sort/json'
 }
 
 export function save (parameter) {

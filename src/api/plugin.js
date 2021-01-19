@@ -2,12 +2,12 @@ import request from '@/utils/request'
 
 const pluginApi = {
   type: '/admin/plugin/',
-  updateParam: '/admin/plugin/params.json'
+  updateParam: '/admin/plugin/params/json'
 }
 
 export function getByType (type) {
   return request({
-    url: pluginApi.type + type + '/all.json',
+    url: pluginApi.type + type + '/all/json',
     method: 'get'
   })
 }
