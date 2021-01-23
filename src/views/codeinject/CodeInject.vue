@@ -8,23 +8,34 @@
         </svg>
       </a>
     </template>
-    <b-card no-body class="mb-3">
-      <b-card-header header-tag="header" class="p-1" role="tab">
-        <b-button block v-b-toggle.accordion-1 variant="white" class="no-bg no-shadow text-left">Accordion 1</b-button>
-      </b-card-header>
-      <b-collapse id="accordion-1" visible accordion="my-accordion" role="tabpanel">
-        <b-card-body>
-          <b-card-text>I start opened because <code>visible</code> is <code>true</code></b-card-text>
-          <b-card-text>{{ text }}</b-card-text>
-        </b-card-body>
-        <b-card-body>
-          <!-- <a href="#" class="card-link">Copy Code</a>
-          <a href="#" class="card-link">Copy Template Tag</a> -->
-          <b-button variant="primary" class="mr-1">Copy Template Tag</b-button>
-          <b-button variant="white" class="mr-1">Edit</b-button>
-          <b-button variant="white" class="mr-1">Delete</b-button>
-        </b-card-body>
-      </b-collapse>
-    </b-card>
+    <Code v-for="item in codes" :value="item" :key="item.id" />
   </t-main-container>
 </template>
+<script>
+import Code from './components/Code'
+import { codeList } from '@/api/code'
+export default {
+  components: {
+    Code
+  },
+  data () {
+    return {
+      codes: []
+    }
+  },
+  mounted () {
+    this.getCodeList()
+  },
+  methods: {
+    getCodeList () {
+      codeList().then(res => {
+        if (res.code !== 0) {
+          // TODO 处理错误
+          return
+        }
+        this.codes = res.data.codes
+      })
+    }
+  }
+}
+</script>

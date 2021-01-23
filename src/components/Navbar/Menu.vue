@@ -59,43 +59,43 @@ export default {
           name: 'Code injection',
           icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4" /></svg>',
           router: '/codeinject'
-        },
-        {
-          name: 'UI elements',
-          muted: true
-        },
-        {
-          name: 'Plugins',
-          icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>',
-          active: true,
-          children: [
-            {
-              name: 'Alert',
-              active: true,
-              router: '/components/alert'
-            },
-            {
-              name: 'Badge',
-              router: '/components/badge'
-            },
-            {
-              name: 'Table',
-              router: '/components/table'
-            },
-            {
-              name: 'Card',
-              router: '/components/card'
-            },
-            {
-              name: 'Form',
-              router: '/components/form'
-            },
-            {
-              name: 'Editor',
-              router: '/components/editor'
-            }
-          ]
         }
+        // {
+        //   name: 'UI elements',
+        //   muted: true
+        // },
+        // {
+        //   name: 'Plugins',
+        //   icon: '<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-grid"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>',
+        //   active: true,
+        //   children: [
+        //     {
+        //       name: 'Alert',
+        //       active: true,
+        //       router: '/components/alert'
+        //     },
+        //     {
+        //       name: 'Badge',
+        //       router: '/components/badge'
+        //     },
+        //     {
+        //       name: 'Table',
+        //       router: '/components/table'
+        //     },
+        //     {
+        //       name: 'Card',
+        //       router: '/components/card'
+        //     },
+        //     {
+        //       name: 'Form',
+        //       router: '/components/form'
+        //     },
+        //     {
+        //       name: 'Editor',
+        //       router: '/components/editor'
+        //     }
+        //   ]
+        // }
       ]
     }
   }
