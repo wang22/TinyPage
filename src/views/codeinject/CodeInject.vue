@@ -1,14 +1,8 @@
 <template>
   <t-main-container title="Code Inject" note="Enhance the functionality of your site">
-    <template #right>
-      <a @click="$router.push('/')" class="btn btn-md text-muted">
-        <span class="d-none d-sm-inline mx-1">New Code</span>
-        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h10a8 8 0 018 8v2M3 10l6 6m-6-6l6-6" />
-        </svg>
-      </a>
-    </template>
-    <Code v-for="item in codes" :value="item" :key="item.id" />
+    <b-button @click="addNewCode" block variant="white" class="mb-3">Add New Code</b-button>
+    <Code v-for="(item, index) in newCodes" :value="item" :key="index" @deleted="onDeleted" />
+    <Code v-for="item in codes" :value="item" :key="item.id" @deleted="onDeleted" />
   </t-main-container>
 </template>
 <script>
@@ -20,7 +14,8 @@ export default {
   },
   data () {
     return {
-      codes: []
+      codes: [],
+      newCodes: []
     }
   },
   mounted () {
@@ -34,6 +29,28 @@ export default {
           return
         }
         this.codes = res.data.codes
+      })
+    },
+    addNewCode () {
+      this.newCodes.push({
+        key: 'new _code',
+        description: 'code description',
+        language: 'text/javascript',
+        code: 'console.log("hello TinyCMS");'
+      })
+    },
+    onDeleted (id) {
+      this.codes = this.codes.filter(val => {
+        if (val.id === id) {
+          return false
+        }
+        return val
+      })
+      this.newCodes = this.newCodes.filter(val => {
+        if (val.id === id) {
+          return false
+        }
+        return val
       })
     }
   }
