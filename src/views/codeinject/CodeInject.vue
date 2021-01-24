@@ -33,7 +33,7 @@ export default {
     },
     addNewCode () {
       this.newCodes.push({
-        key: 'new _code',
+        key: 'new_code',
         description: 'code description',
         language: 'text/javascript',
         code: 'console.log("hello TinyCMS");'

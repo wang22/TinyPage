@@ -17,7 +17,7 @@ export function update (key, value) {
 
 export function get (key) {
   return request({
-    url: `/admin/dict/${key}/info/json`,
+    url: `/admin/dict/${key}/json`,
     method: 'get'
   })
 }

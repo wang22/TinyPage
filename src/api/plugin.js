@@ -7,7 +7,7 @@ const pluginApi = {
 
 export function getByType (type) {
   return request({
-    url: pluginApi.type + type + '/all/json',
+    url: pluginApi.type + type + '/json',
     method: 'get'
   })
 }
