@@ -172,9 +172,8 @@ export default {
     getVisible (type) {
       switch (parseInt(type)) {
         case 0: return 'Private'
-        case 1: return 'Paid Only'
-        case 2: return 'Member Only'
-        case 3: return 'Public'
+        case 1: return 'Member Only'
+        case 2: return 'Public'
       }
     }
   }

@@ -1,6 +1,6 @@
 <template>
   <div class="d-flex flex fixed-content">
-    <post-navbar @changeChannel="onChangeChannel" @changeStatus="onChangeStatus" />
+    <!-- <post-navbar @changeChannel="onChangeChannel" @changeStatus="onChangeStatus" /> -->
     <div class="d-flex flex">
       <div class="d-flex flex-column flex">
         <div class="px-3 pt-3">
@@ -42,18 +42,37 @@
             </b-input-group>
           </div>
         </div>
+        <b-breadcrumb class="no-bg" :items="breadcrumb" style="margin-bottom: -1rem;"></b-breadcrumb>
         <post-list ref="postList" />
       </div>
     </div>
   </div>
 </template>
 <script>
-import PostNavbar from './components/Navbar'
+// import PostNavbar from './components/Navbar'
 import PostList from './components/PostList'
 
 export default {
+  data () {
+    return {
+      breadcrumb: [
+        {
+          text: 'Admin',
+          href: '#'
+        },
+        {
+          text: 'Manage',
+          href: '#'
+        },
+        {
+          text: 'Library',
+          active: true
+        }
+      ]
+    }
+  },
   components: {
-    PostNavbar,
+    // PostNavbar,
     PostList
   },
   methods: {
