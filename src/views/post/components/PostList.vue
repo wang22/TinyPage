@@ -25,11 +25,14 @@
         <template #cell(title)="data">
           <div class="d-flex bd-highlight">
             <div class="mr-2 flex-shrink-1 bd-highlight">
-              <span v-if="data.item.excerpt" v-html="icon.post"></span><span v-else v-html="icon.folder"></span>
+              <span v-if="data.item.excerpt" v-html="icon.post"></span><span v-else v-html="icon.folder" style="cursor: pointer;"></span>
             </div>
             <div class="w-100 bd-highlight">
               <a href="#" class="item-title text-color">{{data.item.title}}</a>
-              <div class="item-except text-muted text-sm h-1x"><span v-if="data.item.excerpt">{{data.item.excerpt}}</span><span v-else>No Excerpt</span></div>
+              <div class="item-except text-muted text-sm h-1x">
+                <span v-if="data.item.excerpt">{{data.item.excerpt}}</span>
+                <span v-else>No Excerpt</span>
+              </div>
             </div>
           </div>
         </template>
